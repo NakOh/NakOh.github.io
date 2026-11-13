@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="김민수(NakOh) 포트폴리오. 9년째 게임을 만들고, 회사 밖에서는 AI 인프라 위에 Web2·Web3 서비스를 직접 운영합니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="김민수 포트폴리오">
+<meta property="og:description" content="김민수(NakOh) 포트폴리오. 9년째 게임을 만들고, 회사 밖에서는 AI 인프라 위에 Web2·Web3 서비스를 직접 운영합니다.">
+<meta property="og:url" content="https://nakoh.github.io/">
+<meta name="theme-color" content="#08090B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090B'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial,sans-serif' font-size='26' font-weight='900' text-anchor='middle' fill='%23F2EFE9'%3EMK%3C/text%3E%3Ccircle cx='50' cy='40' r='4' fill='%232FD0BA'/%3E%3C/svg%3E">
+<title>김민수 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@500;700;900&display=swap">
+<style>
+/* Layout: full-bleed bands, content in a 1240px inner column.
+   One loud idea: every commit is a particle (10,515) - sphere -> yearly timeline -> clusters by type.
+   Colors are the career itself: amber client -> teal server -> ivory personal services.
+   Deliberately dark-only: one cinematic world, every color set explicitly. */
+:root {
+  --bg: #08090B;
+  --bg2: #0D0F12;
+  --panel: #111418;
+  --panel2: #161A1F;
+  --line: #1E2329;
+  --line2: #2D343C;
+  --fg: #F2EFE9;
+  --muted: #A0A8B0;
+  --faint: #626C75;
+  --client: #F2A93B;
+  --server: #2FD0BA;
+  --web: #8EA0FF;
+  --db: #FF7A66;
+  --tool: #8A96A0;
+  --personal: #F4EFE6;
+  --card: #F4EFE6;
+  --ink: #15171A;
+  --red: #C8352B;
+  --f-kr: "Black Han Sans", "IBM Plex Sans KR", "Apple SD Gothic Neo", sans-serif;
+  --f-display: "Unbounded", "IBM Plex Sans KR", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.2, .75, .2, 1);
+  --gut-l: max(20px, env(safe-area-inset-left, 0px));
+  --gut-r: max(20px, env(safe-area-inset-right, 0px));
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+::selection { background: var(--server); color: var(--bg); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--server); outline-offset: 3px; border-radius: 6px; }
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--gut-l);
+  padding-right: var(--gut-r);
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); display: inline-flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+.h-kr { font-family: var(--f-kr); font-weight: 400; font-size: clamp(38px, 6.4vw, 88px); line-height: 1.04; letter-spacing: -0.01em; }
+.h-kr .hl { color: transparent; background: linear-gradient(100deg, var(--client), var(--server) 55%, var(--personal)); -webkit-background-clip: text; background-clip: text; }
+.lead { color: var(--muted); font-size: clamp(16px, 1.5vw, 19px); max-width: 38em; }
+.sec { position: relative; padding-block: clamp(96px, 14vw, 180px); overflow-x: clip; }
+.sec-head { display: grid; gap: 22px; margin-bottom: clamp(48px, 6vw, 80px); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line2); color: var(--muted); white-space: nowrap; }
+
+/* reveal */
+.rv { transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0ms); }
+.rv.pre { opacity: 0; transform: translate3d(0, 56px, 0); }
+
+/* chrome */
+.progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; }
+.progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--client), var(--server), var(--personal)); transform-origin: left; transform: scaleX(0); }
+.glow { position: fixed; left: 0; top: 0; width: 640px; height: 640px; border-radius: 50%; pointer-events: none; z-index: 0; background: radial-gradient(circle, rgba(47, 208, 186, .10), rgba(242, 169, 59, .05) 40%, transparent 68%); transform: translate3d(-9999px, 0, 0); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); transition: background .4s, border-color .4s; border-bottom: 1px solid transparent; }
+.nav.solid { background: rgba(8, 9, 11, .72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom-color: var(--line); }
+.nav .inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 20px; }
+.logo { font-family: var(--f-display); font-weight: 900; font-size: 18px; text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--server); }
+.nav nav { display: flex; gap: 26px; font-size: 14px; }
+.nav nav a { text-decoration: none; color: var(--muted); position: relative; transition: color .2s; }
+.nav nav a:hover { color: var(--fg); }
+.nav nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--server); transform: scaleX(0); transition: transform .3s var(--ease); transform-origin: left; }
+.nav nav a:hover::after { transform: scaleX(1); }
+.nav .cta { font-family: var(--f-mono); font-size: 12px; text-decoration: none; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line2); }
+.nav .cta:hover { border-color: var(--server); color: var(--server); }
+
+/* hero / commit field */
+.scrolly { position: relative; height: 340vh; }
+.stage { position: sticky; top: env(safe-area-inset-top, 0px); height: calc(100vh - env(safe-area-inset-top, 0px)); height: calc(100svh - env(safe-area-inset-top, 0px)); overflow: hidden;
+  background: radial-gradient(60% 55% at 72% 50%, rgba(47, 208, 186, .10), transparent 70%), radial-gradient(45% 45% at 12% 85%, rgba(242, 169, 59, .08), transparent 70%), var(--bg); }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
+.stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0, 0, 0, .55)); }
+.hero-copy { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; z-index: 2; pointer-events: none; }
+.hero-copy > * { max-width: 640px; }
+.kicker { font-family: var(--f-mono); font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 10px; letter-spacing: .04em; }
+.pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--server); box-shadow: 0 0 0 0 rgba(47, 208, 186, .6); animation: pulse 2s infinite; flex: none; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(47, 208, 186, 0); } 100% { box-shadow: 0 0 0 0 rgba(47, 208, 186, 0); } }
+.hero-copy h1 { margin-top: 22px; display: grid; gap: 6px; }
+.hero-copy h1 .kr { font-family: var(--f-kr); font-weight: 400; font-size: clamp(84px, 15vw, 210px); line-height: .9; letter-spacing: -0.02em; }
+.hero-copy h1 .en { font-family: var(--f-display); font-weight: 900; font-size: clamp(18px, 2.4vw, 30px); letter-spacing: .22em; color: transparent; -webkit-text-stroke: 1px var(--muted); }
+.hero-copy .tag { margin-top: 26px; font-size: clamp(17px, 1.8vw, 21px); line-height: 1.6; max-width: 30em; }
+.hero-copy .tag b { font-weight: 500; color: var(--server); }
+.facts { list-style: none; margin: 30px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 34px; }
+.facts li { display: grid; gap: 2px; color: var(--muted); font-size: 13px; }
+.facts b { font-family: var(--f-display); font-weight: 700; font-size: clamp(24px, 2.8vw, 34px); color: var(--fg); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.hint { margin-top: 40px; font-family: var(--f-mono); font-size: 12px; color: var(--faint); display: inline-flex; gap: 10px; align-items: center; }
+.hint span { display: inline-block; animation: bob 1.6s var(--ease) infinite; color: var(--server); }
+@keyframes bob { 50% { transform: translateY(6px); } }
+.load > * { animation: rise 1.1s var(--ease) both; }
+.load > *:nth-child(2) { animation-delay: .08s; }
+.load > *:nth-child(3) { animation-delay: .16s; }
+.load > *:nth-child(4) { animation-delay: .24s; }
+.load > *:nth-child(5) { animation-delay: .32s; }
+@keyframes rise { from { opacity: 0; transform: translate3d(0, 40px, 0); } }
+.cap { position: absolute; left: 0; right: 0; top: calc(64px + 3vh); z-index: 2; pointer-events: none; opacity: 0; visibility: hidden; display: grid; gap: 14px; }
+.cap h2 { font-family: var(--f-kr); font-weight: 400; font-size: clamp(30px, 4.4vw, 60px); line-height: 1.08; }
+.cap .small { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+/* marquee */
+.marquee { position: relative; z-index: 1; border-block: 1px solid var(--line); padding-block: 40px; display: grid; gap: 4px; overflow: hidden; background: var(--bg2); }
+.mq { overflow: hidden; }
+.track { display: flex; width: max-content; animation: slide 60s linear infinite; }
+.mq.rev .track { animation-direction: reverse; animation-duration: 72s; }
+.track span { font-family: var(--f-kr); font-size: clamp(42px, 7.5vw, 110px); line-height: 1.12; padding-right: .55em; white-space: nowrap; }
+.mq.rev .track span { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; font-size: clamp(30px, 5vw, 72px); letter-spacing: -0.02em; }
+.track .o { color: transparent; -webkit-text-stroke: 1.2px var(--line2); }
+.track .a { color: var(--client); }
+.track .t { color: var(--server); }
+@keyframes slide { to { transform: translate3d(-50%, 0, 0); } }
+.marquee:hover .track { animation-play-state: paused; }
+
+/* timeline */
+.tl { position: relative; padding-left: 52px; }
+.tl-rail, .tl-fill { position: absolute; left: 15px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; }
+.tl-rail { background: var(--line); }
+.tl-fill { background: linear-gradient(var(--tool), var(--client) 30%, var(--server) 62%, var(--personal)); transform-origin: top; transform: scaleY(var(--p, 1)); box-shadow: 0 0 18px rgba(47, 208, 186, .35); }
+.tl-item { position: relative; display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 10px 40px; padding-block: 34px; border-bottom: 1px solid var(--line); }
+.tl-item::before { content: ""; position: absolute; left: -43px; top: 44px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--c, var(--faint)); box-shadow: 0 0 0 5px var(--bg); }
+.tl-item .y { font-family: var(--f-display); font-weight: 700; font-size: clamp(22px, 2.4vw, 30px); color: var(--c, var(--fg)); letter-spacing: -0.02em; line-height: 1.2; }
+.tl-item .y small { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 12px; color: var(--faint); letter-spacing: .04em; margin-top: 6px; }
+.tl-item .body { display: grid; gap: 10px; min-width: 0; }
+.tl-item h3 { font-size: clamp(20px, 2vw, 26px); font-weight: 700; letter-spacing: -0.01em; }
+.tl-item h3 .org { color: var(--muted); font-weight: 400; font-size: .8em; }
+.tl-item p { color: var(--muted); max-width: 44em; }
+.tl-item p b { color: var(--fg); font-weight: 500; }
+.now { font-family: var(--f-mono); font-size: 11px; color: var(--server); border: 1px solid rgba(47, 208, 186, .4); border-radius: 999px; padding: 2px 9px; margin-left: 10px; vertical-align: middle; letter-spacing: .08em; }
+
+/* bento */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.sv { --accent: var(--server); grid-column: span 2; position: relative; isolation: isolate; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(180deg, var(--panel2), var(--panel)); padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; overflow: hidden;
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .35s var(--ease), border-color .35s; }
+.sv.w3 { grid-column: span 3; }
+.sv.w4 { grid-column: span 4; }
+.sv::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .35s; background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 18%, transparent), transparent 62%); }
+.sv:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.sv:hover::before { opacity: 1; }
+.sv .row1 { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.live { font-family: var(--f-mono); font-size: 12px; color: var(--server); display: inline-flex; align-items: center; gap: 8px; }
+.live.off { color: var(--muted); }
+.live.off .pulse { background: var(--muted); animation: none; }
+.since { font-family: var(--f-mono); font-size: 12px; color: var(--faint); }
+.sv h3 { font-family: var(--f-display); font-weight: 700; font-size: clamp(28px, 3.2vw, 46px); letter-spacing: -0.03em; line-height: 1.05; }
+.sv .kr { color: var(--muted); font-size: 15px; margin-top: -6px; }
+.sv ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--muted); font-size: 15px; }
+.sv ul li::marker { color: var(--faint); }
+.sv ul b { color: var(--fg); font-weight: 500; }
+.sv .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+.sv .foot a { font-family: var(--f-mono); font-size: 13px; text-decoration: none; color: var(--accent); }
+.sv .foot a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cnt { font-family: var(--f-mono); font-size: 12px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 16px 18px; border-radius: 14px; background: rgba(47, 208, 186, .07); border: 1px solid rgba(47, 208, 186, .22); }
+.price b { font-family: var(--f-display); font-weight: 900; font-size: clamp(30px, 3.6vw, 44px); letter-spacing: -0.03em; color: var(--server); }
+.price span { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.pipe { position: relative; display: flex; justify-content: space-between; padding-top: 20px; margin-block: 6px; }
+.pipe::before { content: ""; position: absolute; left: 6px; right: 6px; top: 6px; height: 2px; background: var(--line2); }
+.pipe span { position: relative; font-family: var(--f-mono); font-size: 12px; color: var(--muted); text-align: center; flex: 1; }
+.pipe span::before { content: ""; position: absolute; left: 50%; top: -19px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--panel); border: 2px solid var(--line2); }
+.pipe .runner { position: absolute; top: 2px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--server); box-shadow: 0 0 14px var(--server); animation: run 4.2s var(--ease) infinite; }
+@keyframes run { 0% { left: 4%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { left: 94%; opacity: 0; } }
+.gw { width: 100%; height: auto; display: block; }
+.gw .flow { stroke-dasharray: 3 9; animation: dash 1.4s linear infinite; }
+.gw .flow.b { animation-duration: 1.9s; }
+@keyframes dash { to { stroke-dashoffset: -24; } }
+
+/* community */
+.counters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.counter { border-top: 1px solid var(--line2); padding-top: 22px; display: grid; gap: 10px; align-content: start; }
+.counter b { font-family: var(--f-display); font-weight: 900; font-size: clamp(56px, 9vw, 132px); line-height: .9; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; color: var(--fg); }
+.counter:nth-child(1) b { color: var(--server); }
+.counter .nm { font-weight: 700; font-size: 18px; }
+.counter p { color: var(--muted); font-size: 15px; }
+.counter a { font-family: var(--f-mono); font-size: 13px; color: var(--server); text-decoration: none; }
+.counter a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.xmq { margin-top: 64px; border-block: 1px solid var(--line); padding-block: 18px; overflow: hidden; }
+.xmq .track { animation-duration: 50s; gap: 0; }
+.xmq .track span { font-family: var(--f-mono); font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 0; }
+.xmq .track span::after { content: "◆"; color: var(--client); margin-inline: 22px; font-size: 9px; vertical-align: middle; }
+.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 56px; }
+.tool { border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 8px; align-content: start; background: var(--panel); transition: border-color .3s, transform .3s var(--ease); }
+.tool:hover { border-color: var(--line2); transform: translateY(-4px); }
+.tool h3 { font-family: var(--f-display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+.tool p { color: var(--muted); font-size: 14px; }
+.tool .meta { font-family: var(--f-mono); font-size: 12px; color: var(--faint); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.tool .meta a { color: var(--server); text-decoration: none; }
+
+/* crypto rows */
+.xrows { border-top: 1px solid var(--line); }
+.xrow { position: relative; display: grid; grid-template-columns: 300px minmax(0, 1fr) 230px; gap: 12px 36px; padding-block: 30px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.xrow::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, var(--client), var(--server)); transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease); }
+.xrow:hover::after { transform: scaleX(1); }
+.xrow .nm { font-family: var(--f-display); font-weight: 700; font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; transition: color .3s, transform .4s var(--ease); line-height: 1.2; }
+.xrow:hover .nm { color: var(--server); transform: translateX(8px); }
+.xrow .nm small { display: block; font-family: var(--f-body); font-weight: 400; font-size: 14px; color: var(--muted); letter-spacing: 0; margin-top: 6px; }
+.xrow .d { color: var(--muted); }
+.xrow .st { font-family: var(--f-mono); font-size: 12px; color: var(--faint); text-align: right; }
+.xrow .st b { display: block; color: var(--client); font-weight: 400; margin-bottom: 4px; }
+
+/* games */
+.fan { position: relative; height: 420px; margin-block: 8px 40px; }
+.fan-in { position: absolute; left: 50%; bottom: 0; width: 0; height: 0; }
+.pc { position: absolute; left: -78px; bottom: 30px; width: 156px; height: 222px; border-radius: 14px; background: var(--card); color: var(--ink); box-shadow: 0 18px 40px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(0, 0, 0, .06);
+  transform-origin: 50% 135%; transform: rotate(var(--a)) translateY(var(--lift, 0px)); transition: transform .8s var(--ease), box-shadow .3s; transition-delay: var(--dd, 0ms); cursor: default; }
+.pc:hover { --lift: -34px; transition-delay: 0ms; z-index: 30; box-shadow: 0 30px 60px rgba(0, 0, 0, .6), 0 0 0 2px var(--client); }
+.fan.stacked .pc { transform: rotate(0deg) translateY(0); }
+.pc .ix { position: absolute; left: 12px; top: 10px; font-family: var(--f-display); font-weight: 700; font-size: 20px; line-height: 1; display: grid; justify-items: center; gap: 2px; }
+.pc .ix i { font-style: normal; font-size: 16px; }
+.pc .ix.b { left: auto; top: auto; right: 12px; bottom: 10px; transform: rotate(180deg); }
+.pc .nm { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-kr); font-size: 30px; letter-spacing: -0.01em; padding-inline: 14px; text-align: center; line-height: 1.1; }
+.pc.r { color: var(--red); }
+.pc.r .nm { color: var(--ink); }
+.pc.hw { background: var(--red); color: var(--card); }
+.pc.hw .nm { color: var(--card); }
+.pc.hw .nm::after { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(244, 239, 230, .35); border-radius: 8px; }
+.pc.ch { background: #1C1F24; color: var(--client); box-shadow: 0 18px 40px rgba(0, 0, 0, .45), inset 0 0 0 1px var(--line2); }
+.pc.ch .nm { color: var(--card); }
+.bars { display: grid; gap: 26px; margin-top: 24px; }
+.bar { display: grid; grid-template-columns: 170px minmax(0, 1fr) 90px; gap: 6px 22px; align-items: center; }
+.bar .lb { font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
+.bar .lb i { width: 10px; height: 10px; border-radius: 2px; background: var(--c); }
+.bar .tr { height: 14px; border-radius: 7px; background: var(--line); overflow: hidden; }
+.bar .fl { height: 100%; width: var(--w); background: linear-gradient(90deg, color-mix(in srgb, var(--c) 55%, transparent), var(--c)); border-radius: 7px; transform-origin: left; transition: transform 1.4s var(--ease); transition-delay: var(--d, 0ms); }
+.bars.pre .fl { transform: scaleX(0); }
+.bar .n { font-family: var(--f-mono); font-size: 15px; text-align: right; font-variant-numeric: tabular-nums; }
+.bar .ds { grid-column: 2 / 4; color: var(--muted); font-size: 14px; }
+.duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: 64px; }
+.duo > div { border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 14px; background: var(--panel); align-content: start; }
+.duo h3 { font-size: 18px; font-weight: 700; }
+.duo h3 small { color: var(--faint); font-family: var(--f-mono); font-weight: 400; font-size: 12px; margin-left: 8px; }
+
+/* early */
+.hs { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 18px; scrollbar-width: thin; scrollbar-color: var(--line2) transparent; }
+.ec { flex: 0 0 min(80%, 290px); scroll-snap-align: start; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); padding: 22px; display: grid; gap: 10px; align-content: start; transition: border-color .3s, transform .3s var(--ease); }
+.ec:hover { border-color: var(--client); transform: translateY(-4px); }
+.ec .y { font-family: var(--f-mono); font-size: 12px; color: var(--client); }
+.ec h3 { font-family: var(--f-display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; line-height: 1.25; }
+.ec p { color: var(--muted); font-size: 14px; }
+
+/* stack */
+.stk { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 0 40px; border-top: 1px solid var(--line); }
+.stk > div { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 18px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+.stk dt { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; color: var(--faint); padding-top: 5px; }
+.stk dd { margin: 0; }
+
+/* contact */
+.contact { text-align: left; }
+.contact .big { font-family: var(--f-kr); font-size: clamp(52px, 10vw, 150px); line-height: 1; letter-spacing: -0.01em; }
+.contact .big span { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--line2); }
+.links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
+.lk { display: inline-flex; align-items: center; gap: 14px; padding: 16px 24px; border-radius: 999px; border: 1px solid var(--line2); text-decoration: none; font-size: 16px; transition: border-color .3s, background .3s, color .3s; }
+.lk .k { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.lk .ar { display: inline-block; transition: transform .35s var(--ease); }
+.lk:hover { border-color: var(--server); background: rgba(47, 208, 186, .08); }
+.lk:hover .ar { transform: translate(4px, -4px); }
+footer { border-top: 1px solid var(--line); }
+footer .inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 28px 40px; font-family: var(--f-mono); font-size: 12px; color: var(--faint); }
+
+main, footer, .marquee { position: relative; z-index: 1; }
+
+@media (max-width: 980px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sv, .sv.w3 { grid-column: span 1; }
+  .sv.w4 { grid-column: span 2; }
+  .xrow { grid-template-columns: minmax(0, 1fr); }
+  .xrow .st { text-align: left; }
+  .tools { grid-template-columns: minmax(0, 1fr); }
+  .nav nav { display: none; }
+}
+@media (max-width: 760px) {
+  .scrolly { height: 300vh; }
+  .hero-copy { justify-content: flex-start; padding-top: calc(64px + 4vh); }
+  .tl { padding-left: 36px; }
+  .tl-rail, .tl-fill { left: 7px; }
+  .tl-item { grid-template-columns: minmax(0, 1fr); padding-block: 26px; }
+  .tl-item::before { left: -35px; top: 32px; }
+  .counters { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .bar { grid-template-columns: minmax(0, 1fr) 70px; }
+  .bar .tr { grid-column: 1 / -1; grid-row: 2; }
+  .bar .ds { grid-column: 1 / -1; }
+  .duo { grid-template-columns: minmax(0, 1fr); }
+  .fan { height: 330px; }
+  .fan-in { transform: scale(.66); transform-origin: 0 0; }
+  .stk > div { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+@media (max-width: 620px) {
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .sv, .sv.w3, .sv.w4 { grid-column: span 1; }
+  .sv { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track, .pulse, .hint span, .pipe .runner, .gw .flow, .load > * { animation: none !important; }
+  .rv, .pc, .bar .fl, .sv { transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+<style>html, body { margin: 0; } img { max-width: 100%; } [hidden] { display: none !important; }</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="inner">
+    <a class="logo" href="#top">MK<span>.</span></a>
+    <nav aria-label="섹션">
+      <a href="#career">경력</a>
+      <a href="#services">서비스</a>
+      <a href="#community">텔레그램</a>
+      <a href="#crypto">크립토</a>
+      <a href="#games">게임</a>
+    </nav>
+    <a class="cta" href="#contact">연락하기</a>
+  </div>
+</header>
+
+<section class="scrolly" id="top" aria-label="소개와 커밋 10,515개">
+  <div class="stage" id="stage">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="inner hero-copy load" id="heroCopy">
+      <p class="kicker"><i class="pulse"></i>LNPGames · Game Development Manager</p>
+      <h1><span class="kr">김민수</span><span class="en">MINSOO KIM</span></h1>
+      <p class="tag">9년째 게임을 만듭니다. Unity 클라이언트로 시작해 서버·DB·클라우드를 맡았고, 회사 밖에서는 <b>AI 인프라 위에 크립토·금융 서비스</b>를 직접 운영합니다.</p>
+      <ul class="facts">
+        <li><b data-count="10515">10,515</b>커밋 · 2014–2026</li>
+        <li><b data-count="2934">2,934</b>텔레그램 구독자</li>
+        <li><b data-count="13">13</b>2026년에 시작한 프로젝트</li>
+      </ul>
+      <p class="hint">스크롤하면 커밋 10,515개가 움직입니다 <span>↓</span></p>
+    </div>
+    <div class="inner cap" id="cap1">
+      <p class="eyebrow">Commits 2014 — 2026</p>
+      <h2>점 하나가 커밋 하나.<br>10,515개.</h2>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background: var(--client)"></i>클라이언트</span>
+        <span><i style="background: var(--server)"></i>서버</span>
+        <span><i style="background: var(--web)"></i>웹·관리자</span>
+        <span><i style="background: var(--db)"></i>DB</span>
+        <span><i style="background: var(--tool)"></i>도구</span>
+        <span><i style="background: var(--personal)"></i>개인 저장소</span>
+      </div>
+      <p class="small" id="dotNote">점 하나 = 커밋 하나 · LNPGames 저장소 129개 + 개인 저장소 58개</p>
+    </div>
+    <div class="inner cap" id="cap2">
+      <p class="eyebrow">By type</p>
+      <h2>클라이언트에서 서버로,<br>그리고 내 서비스로.</h2>
+      <p class="small">2020년 서버 1,231커밋 · 2026년 개인 저장소 3,222커밋</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-label="만든 게임과 쓰는 기술">
+  <div class="mq" aria-hidden="true"><div class="track">
+    <span>7포커</span><span class="o">바둑이</span><span class="a">홀덤</span><span class="o">하이로우</span><span>바카라</span><span class="o">맞고</span><span class="a">섯다</span><span class="o">블랙잭</span><span>룰렛</span><span class="o">슬롯</span>
+    <span>7포커</span><span class="o">바둑이</span><span class="a">홀덤</span><span class="o">하이로우</span><span>바카라</span><span class="o">맞고</span><span class="a">섯다</span><span class="o">블랙잭</span><span>룰렛</span><span class="o">슬롯</span>
+  </div></div>
+  <div class="mq rev" aria-hidden="true"><div class="track">
+    <span class="t">Rebatify</span><span class="o">ParkingPick</span><span>Donzomyo</span><span class="o">CreatorStudio</span><span class="t">LLMGateway</span><span class="o">KorbitMaker</span><span>Arbitrage</span><span class="o">TossTrader</span><span class="t">MingsBog</span>
+    <span class="t">Rebatify</span><span class="o">ParkingPick</span><span>Donzomyo</span><span class="o">CreatorStudio</span><span class="t">LLMGateway</span><span class="o">KorbitMaker</span><span>Arbitrage</span><span class="o">TossTrader</span><span class="t">MingsBog</span>
+  </div></div>
+</div>
+
+<main>
+  <section class="sec" id="career" aria-labelledby="career-h">
+    <div class="inner">
+      <div class="sec-head">
+        <p class="eyebrow rv">Career</p>
+        <h2 class="h-kr rv" id="career-h">동아리 게임에서 시작해<br><span class="hl">9년째 같은 회사</span>에서 만듭니다</h2>
+      </div>
+      <div class="tl" id="tl">
+        <div class="tl-rail"></div><div class="tl-fill" id="tlFill"></div>
+        <div class="tl-item rv" style="--c: var(--tool)">
+          <div class="y">2011<small>2011 – 2017</small></div>
+          <div class="body"><h3>중앙대학교 컴퓨터공학 <span class="org">· 학사</span></h3><p>자료구조, 네트워크, 영상 처리, 안드로이드를 배우며 과제와 스터디 저장소를 쌓기 시작했습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--tool)">
+          <div class="y">2015<small>2015 – 2016</small></div>
+          <div class="body"><h3>게임 제작 동아리 CIEN <span class="org">· 15대 회장</span></h3><p>libGDX로 안드로이드 RPG <b>‘1레벨 용사님’</b>을 만들었습니다. 2016년에는 중앙동아리연합회에서 동아리 활동 지원을 맡았습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: color-mix(in srgb, var(--client) 60%, var(--tool))">
+          <div class="y">2017.03<small>2017.03 – 2017.10</small></div>
+          <div class="body"><h3>Game Developer <span class="org">· 111퍼센트</span></h3><p>슈퍼 캐주얼 게임 WarZ.io, 99TAN, Beelzebub, Bubbloo, Whitehole, Dear My Love 개발에 참여했습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--client)">
+          <div class="y">2017.10<small>2017.10 – 현재</small></div>
+          <div class="body"><h3>Game Development Manager <span class="org">· LNPGames</span><span class="now">NOW</span></h3><p>Unity로 7포커, 바둑이, 홀덤, 맞고, 섯다, 슬롯 등 카지노·보드게임을 만들었습니다. 2018년에는 캐주얼 미니게임 22종을 냈습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--web)">
+          <div class="y">2019</div>
+          <div class="body"><h3>암호화폐 거래소 개발</h3><p>거래소 사용자 웹, 관리자 페이지, 코어 서버를 만들었습니다. 크립토와의 첫 인연입니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--server)">
+          <div class="y">2020</div>
+          <div class="body"><h3>서버로 넘어간 해</h3><p>소셜 카지노 로비·테이블게임·랭킹·푸시 서버(TypeScript, Colyseus)와 MySQL DB를 맡았습니다. 이 해 <b>서버 커밋 1,231개</b>가 클라이언트(163개)를 처음 넘었고, AWS 서버 운영도 이때부터 했습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--client)">
+          <div class="y">2022</div>
+          <div class="body"><h3>Cocos Creator 슬롯</h3><p>새 슬롯 클라이언트에 <b>795커밋</b>을 남기고, Cocos 엔진 포크까지 직접 고쳤습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--server)">
+          <div class="y">2023</div>
+          <div class="body"><h3>홀덤 TCP 서버, 그리고 회사 밖 첫 봇</h3><p>회사에서는 C로 홀덤 TCP 서버와 운영 웹을 맡았습니다. 회사 밖에서는 첫 개인 크립토 봇(CryptoTelegram, Bithumb_Bot)을 만들었습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--personal)">
+          <div class="y">2025.12<small>Rebatify Global 개설</small></div>
+          <div class="body"><h3>영어권 텔레그램 채널</h3><p>국내 채널 ‘밍쓰의 크립토 이벤트 창고’에 이어, 해외 사용자를 위한 Rebatify Global 채널을 열었습니다.</p></div>
+        </div>
+        <div class="tl-item rv" style="--c: var(--personal)">
+          <div class="y">2026<small>개인 커밋 3,222개</small></div>
+          <div class="body"><h3>AI 인프라 위의 서비스들 <span class="now">NOW</span></h3><p>Rebatify(5월), TossTrader(7월), ParkingPick·돈좀요(8월), LLMGateway(9월), CreatorStudio·Arbitrage Desk·KorbitMaker(10월)까지, 올해 <b>새 프로젝트 13개</b>를 시작했습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="services" aria-labelledby="services-h" style="padding-top: 0">
+    <div class="inner">
+      <div class="sec-head">
+        <p class="eyebrow rv">In operation</p>
+        <h2 class="h-kr rv" id="services-h">직접 만들고,<br><span class="hl">지금 돌아가는</span> 서비스</h2>
+        <p class="lead rv">수집기, 서버, 배포, 알림, 결제까지 개인 저장소에서 만들어 실제로 운영하는 것들입니다.</p>
+      </div>
+      <div class="bento">
+        <article class="sv w4 rv">
+          <div class="row1"><span class="live"><i class="pulse"></i>운영 중 · rebatify.net</span><span class="since">2026.05 –</span></div>
+          <h3>Rebatify</h3>
+          <p class="kr">암호화폐 거래소 리베이트·캐시백 비교</p>
+          <ul>
+            <li>거래소별 수수료 리베이트와 캐시백 조건, 상장 전 주식 가격 차이, 거래소·이벤트 목록을 모아 비교합니다.</li>
+            <li>같은 데이터를 <b>AI 에이전트용 유료 API</b>로도 팝니다. 계정도 키도 없이 Coinbase x402로 호출할 때마다 결제됩니다.</li>
+          </ul>
+          <div class="price"><b>1 USDC</b><span>호출당 · Base 체인 · 엔드포인트 14개 · Coinbase Bazaar 등록</span></div>
+          <div class="foot"><a href="https://www.rebatify.net" target="_blank" rel="noopener">rebatify.net ↗</a><a href="https://github.com/NakOh/rebatify-x402" target="_blank" rel="noopener">rebatify-x402 ↗</a><span class="cnt">957 커밋</span></div>
+        </article>
+        <article class="sv rv" style="--d: 80ms">
+          <div class="row1"><span class="live"><i class="pulse"></i>운영 중</span><span class="since">2026.08 –</span></div>
+          <h3>ParkingPick</h3>
+          <p class="kr">예치금·파킹통장 금리 비교</p>
+          <ul><li>거래소 원화 예치금, 파킹통장, CMA, 예금, 적금의 금리와 적용 한도를 한 화면에서 비교합니다.</li><li>웹 푸시 알림, 방문 통계, 수집 상태를 MySQL로 관리합니다.</li></ul>
+          <div class="foot"><a href="https://www.parkingpick.kr" target="_blank" rel="noopener">parkingpick.kr ↗</a><span class="cnt">330 커밋</span></div>
+        </article>
+        <article class="sv rv" style="--accent: var(--client)">
+          <div class="row1"><span class="live"><i class="pulse"></i>운영 중</span><span class="since">2026.08 –</span></div>
+          <h3>돈좀요</h3>
+          <p class="kr">경품·앱테크·공모전 이벤트 모음</p>
+          <ul><li>흩어진 리워드 이벤트를 모으고 참여 방법과 개인별 진행 상태를 관리합니다.</li><li>웹(Next.js), iOS·Android 앱(Expo), API(Fastify)가 한 모노레포에서 데이터 모델을 공유합니다.</li></ul>
+          <div class="foot"><a href="https://donzomyo.kr" target="_blank" rel="noopener">donzomyo.kr ↗</a><span class="cnt">406 커밋</span></div>
+        </article>
+        <article class="sv w4 rv" style="--d: 80ms; --accent: var(--web)">
+          <div class="row1"><span class="live"><i class="pulse"></i>자동 운영</span><span class="since">2026.10 –</span></div>
+          <h3>CreatorStudio</h3>
+          <p class="kr">사람 손 없이 도는 숏폼 영상 파이프라인</p>
+          <div class="pipe" aria-label="수집, 주제, 대본, 검수, 렌더, 게시 순서로 진행"><span>수집</span><span>주제</span><span>대본</span><span>검수</span><span>렌더</span><span>게시</span><i class="runner"></i></div>
+          <ul><li>허브가 자료를 모으고 주제를 고른 뒤, LLMGateway로 9:16 4장면 대본을 쓰고 검수합니다.</li><li>렌더링은 Windows PC 워커가 맡고, 완성본은 플랫폼 공식 API로 올립니다.</li></ul>
+          <div class="foot"><span class="cnt">비공개 저장소</span><span class="cnt">1,037 커밋</span></div>
+        </article>
+        <article class="sv w3 rv">
+          <div class="row1"><span class="live"><i class="pulse"></i>운영 중 · 내부</span><span class="since">2026.09 –</span></div>
+          <h3>LLMGateway</h3>
+          <p class="kr">AI 구독 네 개를 API 하나로</p>
+          <svg class="gw" viewBox="0 0 420 150" role="img" aria-label="Codex, Claude, Gemini, Grok이 게이트웨이 하나로 연결됩니다">
+            <g fill="none" stroke-width="1.5">
+              <path class="flow" d="M88 32 C150 32 160 75 210 75" stroke="#2FD0BA"/>
+              <path class="flow b" d="M88 118 C150 118 160 75 210 75" stroke="#2FD0BA"/>
+              <path class="flow" d="M332 32 C270 32 260 75 210 75" stroke="#F2A93B"/>
+              <path class="flow b" d="M332 118 C270 118 260 75 210 75" stroke="#F2A93B"/>
+            </g>
+            <g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">
+              <rect x="20" y="18" width="68" height="28" rx="14" fill="#161A1F" stroke="#2D343C"/><text x="54" y="36" fill="#F2EFE9">Codex</text>
+              <rect x="20" y="104" width="68" height="28" rx="14" fill="#161A1F" stroke="#2D343C"/><text x="54" y="122" fill="#F2EFE9">Claude</text>
+              <rect x="332" y="18" width="68" height="28" rx="14" fill="#161A1F" stroke="#2D343C"/><text x="366" y="36" fill="#F2EFE9">Gemini</text>
+              <rect x="332" y="104" width="68" height="28" rx="14" fill="#161A1F" stroke="#2D343C"/><text x="366" y="122" fill="#F2EFE9">Grok</text>
+              <rect x="160" y="57" width="100" height="36" rx="18" fill="#0F2A27" stroke="#2FD0BA"/><text x="210" y="79" fill="#2FD0BA" font-weight="600">Gateway</text>
+            </g>
+          </svg>
+          <ul><li>계정 한도가 모자라면 다음 계정으로 넘겨 다시 호출합니다.</li><li>관리 화면에서 계정별 잔여 한도와 모델별 사용량을 보고, Tailscale 안에서만 열립니다.</li></ul>
+          <div class="foot"><span class="cnt">비공개 저장소</span><span class="cnt">124 커밋</span></div>
+        </article>
+        <article class="sv w3 rv" style="--d: 80ms; --accent: var(--client)">
+          <div class="row1"><span class="live off"><i class="pulse"></i>운영 포털</span><span class="since">2026.10 –</span></div>
+          <h3>TT_Studio</h3>
+          <p class="kr">커뮤니티 운영 포털 · LNP STUDIO</p>
+          <ul><li>회원가입·로그인, 관리자 회원 관리, 게시판, 다시보기, 푸시 알림을 갖춘 PWA 포털입니다.</li><li>회차별 후원 원장을 올리면 명예의전당 순위가 자동으로 집계됩니다.</li></ul>
+          <div class="foot"><span class="cnt">비공개 저장소</span><span class="cnt">93 커밋</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="community" aria-labelledby="community-h" style="padding-top: 0">
+    <div class="inner">
+      <div class="sec-head">
+        <p class="eyebrow rv">Community</p>
+        <h2 class="h-kr rv" id="community-h">거래소 이벤트를 모아<br><span class="hl">채널로 알립니다</span></h2>
+      </div>
+      <div class="counters">
+        <div class="counter rv">
+          <b data-count="2934">2,934</b>
+          <span class="nm">밍쓰의 크립토 이벤트 창고</span>
+          <p>국내 거래소 이벤트와 리워드 소식을 정리하는 텔레그램 채널입니다. 링크 443개, 이미지 792개를 공유했습니다.</p>
+          <a href="https://t.me/MingsBog" target="_blank" rel="noopener">t.me/MingsBog ↗</a>
+        </div>
+        <div class="counter rv" style="--d: 100ms">
+          <b data-count="247">247</b>
+          <span class="nm">Rebatify Global</span>
+          <p>2025년 12월에 연 영어권 채널입니다. YouTube @rebatify_global과 함께 운영합니다.</p>
+          <a href="https://t.me/rebatify" target="_blank" rel="noopener">t.me/rebatify ↗</a>
+        </div>
+        <div class="counter rv" style="--d: 200ms">
+          <b data-count="37">37</b>
+          <span class="nm">제휴 거래소</span>
+          <p>바이낸스, OKX, 바이비트, 비트겟, 게이트, KuCoin 등 지금 제휴 중인 거래소 37곳의 수수료 페이백과 이벤트를 Rebatify에서 비교합니다.</p>
+          <a href="https://www.rebatify.net" target="_blank" rel="noopener">rebatify.net ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="xmq" aria-label="제휴 거래소 37곳">
+      <div class="track">
+        <span>Binance</span><span>OKX</span><span>Bybit</span><span>Bitget</span><span>Gate</span><span>KuCoin</span><span>MEXC</span><span>HTX</span><span>BingX</span><span>LBank</span><span>Bitunix</span><span>Backpack</span><span>Flipster</span><span>Hotcoin</span><span>Phemex</span><span>BTCC</span><span>Deepcoin</span><span>XT</span><span>Toobit</span><span>KTX</span><span>KCEX</span><span>BloFin</span><span>Zoomex</span><span>Bitrue</span><span>BYDFi</span><span>Tapbit</span><span>OrangeX</span><span>Picol</span><span>EasiCoin</span><span>Echobit</span><span>HashKey</span><span>Coinstore</span><span>MGBX</span><span>Crypfine</span><span>Nodexx</span><span>StockCoin</span><span>X</span>
+        <span aria-hidden="true">Binance</span><span aria-hidden="true">OKX</span><span aria-hidden="true">Bybit</span><span aria-hidden="true">Bitget</span><span aria-hidden="true">Gate</span><span aria-hidden="true">KuCoin</span><span aria-hidden="true">MEXC</span><span aria-hidden="true">HTX</span><span aria-hidden="true">BingX</span><span aria-hidden="true">LBank</span><span aria-hidden="true">Bitunix</span><span aria-hidden="true">Backpack</span><span aria-hidden="true">Flipster</span><span aria-hidden="true">Hotcoin</span><span aria-hidden="true">Phemex</span><span aria-hidden="true">BTCC</span><span aria-hidden="true">Deepcoin</span><span aria-hidden="true">XT</span><span aria-hidden="true">Toobit</span><span aria-hidden="true">KTX</span><span aria-hidden="true">KCEX</span><span aria-hidden="true">BloFin</span><span aria-hidden="true">Zoomex</span><span aria-hidden="true">Bitrue</span><span aria-hidden="true">BYDFi</span><span aria-hidden="true">Tapbit</span><span aria-hidden="true">OrangeX</span><span aria-hidden="true">Picol</span><span aria-hidden="true">EasiCoin</span><span aria-hidden="true">Echobit</span><span aria-hidden="true">HashKey</span><span aria-hidden="true">Coinstore</span><span aria-hidden="true">MGBX</span><span aria-hidden="true">Crypfine</span><span aria-hidden="true">Nodexx</span><span aria-hidden="true">StockCoin</span><span aria-hidden="true">X</span>
+      </div>
+    </div>
+    <div class="inner">
+      <div class="tools">
+        <article class="tool rv">
+          <h3>TelegramAutoChat</h3>
+          <p>텔레그램 사용자 계정 자동화 엔진입니다. 인터페이스 하나만 구현하면 새 자동화를 붙일 수 있고, 로그인·세션·예약 실행은 엔진이 맡습니다.</p>
+          <div class="meta"><span>C# · MTProto</span><a href="https://github.com/NakOh/TelegramAutoChat" target="_blank" rel="noopener">공개 저장소 ↗</a></div>
+        </article>
+        <article class="tool rv" style="--d: 80ms">
+          <h3>AI_TELEGRAM</h3>
+          <p>Telegram Web A를 포크해 Electron으로 감싼 데스크톱 앱입니다. 전달된 메시지 숨기기로 채널 소음을 줄였습니다.</p>
+          <div class="meta"><span>TypeScript · Electron</span><a href="https://github.com/NakOh/AI_TELEGRAM" target="_blank" rel="noopener">공개 저장소 ↗</a></div>
+        </article>
+        <article class="tool rv" style="--d: 160ms">
+          <h3>twitter-auto-bot</h3>
+          <p>트렌드 주제를 모아 Claude로 한국어 글을 쓰고, 이미지를 붙여 하루 3–4회 무작위 간격으로 게시합니다.</p>
+          <div class="meta"><span>Python · Playwright</span><span>2026.02 –</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="crypto" aria-labelledby="crypto-h" style="padding-top: 0">
+    <div class="inner">
+      <div class="sec-head">
+        <p class="eyebrow rv">Crypto &amp; trading</p>
+        <h2 class="h-kr rv" id="crypto-h">거래소를 만들어 봤고,<br><span class="hl">지금은 그 위에서</span> 거래합니다</h2>
+        <p class="lead rv">2019년 회사에서 거래소를 만든 경험으로, 지금은 차익거래·마켓 메이킹·주식 자동매매 도구를 직접 만들어 운용합니다.</p>
+      </div>
+      <div class="xrows">
+        <div class="xrow rv"><div class="nm">Arbitrage Desk<small>김프·역프 감시와 승인 실행</small></div><p class="d">업비트·빗썸과 바이낸스·바이비트·OKX 사이의 김치 프리미엄과 역프리미엄을 6개 자산, 양방향으로 계산합니다. 기회가 생기면 알리고, 사람이 GO를 눌러야 실행합니다.</p><div class="st"><b>2026.10 –</b>TypeScript</div></div>
+        <div class="xrow rv"><div class="nm">KorbitMaker<small>코빗 USDT 실매매 봇</small></div><p class="d">보관 계정과 매매 계정을 나누고 계정별 원장을 따로 남깁니다. 실매매와 같은 시세로 전략 7개를 가상매매로 함께 돌려 성과를 비교합니다.</p><div class="st"><b>2026.10 –</b>Python · Go · SQLite</div></div>
+        <div class="xrow rv"><div class="nm">TossTrader<small>토스증권 Open API 트레이딩</small></div><p class="d">국내·미국 주식용 웹 트레이딩 서비스입니다. 전략 15종과 DART 공시·뉴스·SNS를 교차 확인하는 뉴스 촉매 신호를 돌리고, 25만 개 표본으로 walk-forward 검증을 합니다.</p><div class="st"><b>2026.07 –</b>C# · ASP.NET Core 10 · React</div></div>
+        <div class="xrow rv"><div class="nm">MyBot<small>데스크톱 멀티 봇</small></div><p class="d">여러 거래소 공통 코드, 전략 러너, 크롬 기반 브라우저 봇을 한 앱에서 운용합니다. 주식 전략은 TossTrader로 옮겼습니다.</p><div class="st"><b>2025.05 –</b>C# · Avalonia</div></div>
+        <div class="xrow rv"><div class="nm">exchange-monitor<small>거래소 이벤트 감시</small></div><p class="d">거래소 이벤트·프로모션 페이지를 계속 감시하고, Claude로 조건과 혜택을 분석합니다.</p><div class="st"><b>2026.02 –</b>Python · Claude API</div></div>
+        <div class="xrow rv"><div class="nm">MyMoney<small>가족 자산 관리</small></div><p class="d">가족 5명의 거래소·지갑 잔액을 한곳에서 관리하고, 기존 월별 스프레드시트 기록을 가져옵니다.</p><div class="st"><b>2026 –</b>TypeScript · MySQL</div></div>
+        <div class="xrow rv"><div class="nm">거래소 개발<small>LNPGames</small></div><p class="d">암호화폐 거래소의 사용자 웹, 관리자 페이지, 코어 서버를 만들었습니다.</p><div class="st"><b>2019 – 2021</b>JavaScript · Java · 102 커밋</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="games" aria-labelledby="games-h" style="padding-top: 0">
+    <div class="inner">
+      <div class="sec-head">
+        <p class="eyebrow rv">Game development</p>
+        <h2 class="h-kr rv" id="games-h">카드 한 장부터<br><span class="hl">게임 서버까지</span></h2>
+        <p class="lead rv">LNPGames에서 만든 카지노·보드게임 10종입니다. 카드에 마우스를 올려 보세요.</p>
+      </div>
+      <div class="fan" id="fan" role="list" aria-label="만든 카지노·보드게임 10종">
+        <div class="fan-in">
+          <div class="pc" role="listitem" style="--a: -40deg; --dd: 0ms"><span class="ix">7<i>♠</i></span><span class="nm">7포커</span><span class="ix b">7<i>♠</i></span></div>
+          <div class="pc r" role="listitem" style="--a: -31deg; --dd: 40ms"><span class="ix">4<i>♥</i></span><span class="nm">바둑이</span><span class="ix b">4<i>♥</i></span></div>
+          <div class="pc" role="listitem" style="--a: -22deg; --dd: 80ms"><span class="ix">A<i>♠</i></span><span class="nm">홀덤</span><span class="ix b">A<i>♠</i></span></div>
+          <div class="pc r" role="listitem" style="--a: -13deg; --dd: 120ms"><span class="ix">8<i>♦</i></span><span class="nm">하이로우</span><span class="ix b">8<i>♦</i></span></div>
+          <div class="pc hw" role="listitem" style="--a: -4deg; --dd: 160ms"><span class="ix">光</span><span class="nm">맞고</span><span class="ix b">光</span></div>
+          <div class="pc hw" role="listitem" style="--a: 4deg; --dd: 200ms"><span class="ix">38</span><span class="nm">섯다</span><span class="ix b">38</span></div>
+          <div class="pc r" role="listitem" style="--a: 13deg; --dd: 240ms"><span class="ix">9<i>♦</i></span><span class="nm">바카라</span><span class="ix b">9<i>♦</i></span></div>
+          <div class="pc" role="listitem" style="--a: 22deg; --dd: 280ms"><span class="ix">J<i>♣</i></span><span class="nm">블랙잭</span><span class="ix b">J<i>♣</i></span></div>
+          <div class="pc ch" role="listitem" style="--a: 31deg; --dd: 320ms"><span class="ix">0</span><span class="nm">룰렛</span><span class="ix b">0</span></div>
+          <div class="pc ch" role="listitem" style="--a: 40deg; --dd: 360ms"><span class="ix">777</span><span class="nm">슬롯</span><span class="ix b">777</span></div>
+        </div>
+      </div>
+
+      <h3 class="rv" style="font-size: clamp(20px, 2vw, 26px); font-weight: 700">LNPGames 커밋 6,351개, 저장소 129개</h3>
+      <div class="bars rv pre-bars" id="bars">
+        <div class="bar" style="--c: var(--client); --w: 100%"><span class="lb"><i></i>클라이언트</span><div class="tr"><div class="fl"></div></div><span class="n">3,714</span><p class="ds">PlayPoker, PlayMatGo, 홀덤, 슬롯(Unity C#, Cocos Creator) · 미니게임 22종 · Cocos 엔진 포크 수정</p></div>
+        <div class="bar" style="--c: var(--server); --w: 55.2%; --d: 120ms"><span class="lb"><i></i>서버</span><div class="tr"><div class="fl"></div></div><span class="n">2,049</span><p class="ds">소셜 카지노 로비·테이블게임·랭킹·푸시(TypeScript, Colyseus) · 슬롯 서버 · 홀덤 TCP 서버(C) · 소셜 로그인·인앱 결제 검증</p></div>
+        <div class="bar" style="--c: var(--web); --w: 10.6%; --d: 240ms"><span class="lb"><i></i>웹·관리자</span><div class="tr"><div class="fl"></div></div><span class="n">392</span><p class="ds">암호화폐 거래소 웹·관리자 · 게임 홈페이지와 운영 관리자</p></div>
+        <div class="bar" style="--c: var(--tool); --w: 2.8%; --d: 360ms"><span class="lb"><i></i>도구</span><div class="tr"><div class="fl"></div></div><span class="n">103</span><p class="ds">게임 에셋 제작·검수 스튜디오(FFmpeg, Codex CLI) · 텍스처 다운로더</p></div>
+        <div class="bar" style="--c: var(--db); --w: 2.5%; --d: 480ms"><span class="lb"><i></i>DB</span><div class="tr"><div class="fl"></div></div><span class="n">93</span><p class="ds">소셜 카지노 MySQL 데이터베이스</p></div>
+      </div>
+
+      <div class="duo">
+        <div class="rv"><h3>슈퍼 캐주얼<small>111퍼센트 · 2017</small></h3><div class="chips"><span class="chip">WarZ.io</span><span class="chip">99TAN</span><span class="chip">Beelzebub</span><span class="chip">Bubbloo</span><span class="chip">Whitehole</span><span class="chip">Dear My Love</span></div></div>
+        <div class="rv" style="--d: 80ms"><h3>캐주얼 미니게임 22종<small>LNPGames · 2018</small></h3><div class="chips"><span class="chip">The Arrow</span><span class="chip">Slide Puzzle</span><span class="chip">Number Chain</span><span class="chip">Bubble Shooter</span><span class="chip">Fish Adventure</span><span class="chip">Jewel Blast Pop</span><span class="chip">Jelly Link</span><span class="chip">Aqua On The Line</span><span class="chip">외 14종</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="early" aria-labelledby="early-h" style="padding-top: 0">
+    <div class="inner">
+      <div class="sec-head">
+        <p class="eyebrow rv">2014 — 2018</p>
+        <h2 class="h-kr rv" id="early-h">처음 만든 것들</h2>
+        <p class="lead rv">대학 동아리와 과제, 첫 외주에서 만든 게임입니다. 옆으로 넘겨 보세요.</p>
+      </div>
+      <div class="hs rv" tabindex="0" aria-label="초기 프로젝트 목록">
+        <article class="ec"><span class="y">2014 – 2016</span><h3>1레벨 용사님</h3><p>CIEN 동아리 안드로이드 RPG. libGDX.</p></article>
+        <article class="ec"><span class="y">2015 – 2016</span><h3>KoreanCarpenter</h3><p>Google Play 출시를 목표로 만든 libGDX 게임. 인앱 결제 연동.</p></article>
+        <article class="ec"><span class="y">2015 – 2016</span><h3>VESS</h3><p>Very Expensive Sword &amp; Shield. C++ 게임, CIEN.</p></article>
+        <article class="ec"><span class="y">2015</span><h3>VesselDefense</h3><p>Unity 디펜스 게임, CIEN.</p></article>
+        <article class="ec"><span class="y">2015 – 2017</span><h3>TomorrowArmy</h3><p>cocos2d-x 모바일 게임.</p></article>
+        <article class="ec"><span class="y">2015</span><h3>VehicleDetection</h3><p>C++ 영상 처리 팀 프로젝트.</p></article>
+        <article class="ec"><span class="y">2016</span><h3>RaiseDraon</h3><p>Unity 게임, MakeMoneyWithUnity 팀.</p></article>
+        <article class="ec"><span class="y">2016</span><h3>ICT Beacon</h3><p>안드로이드 비콘 앱.</p></article>
+        <article class="ec"><span class="y">2017</span><h3>JumpPharaoh · ElephantJump</h3><p>Unity 게임. Tizen 스토어 100위권 목표.</p></article>
+        <article class="ec"><span class="y">2017 – 2018</span><h3>Shooting Star · Heroes · Wild Bunny</h3><p>게임 외주 3종.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contact" aria-labelledby="contact-h" style="padding-top: 0">
+    <div class="inner">
+      <p class="eyebrow rv">Contact</p>
+      <h2 class="big rv" id="contact-h" style="margin-top: 22px">같이 만들 일이<span>있다면.</span></h2>
+      <div class="links rv">
+        <a class="lk" href="https://t.me/MingsBog" target="_blank" rel="noopener">Telegram <span class="k">MingsBog</span><span class="ar">↗</span></a>
+        <a class="lk" href="https://www.linkedin.com/in/nakoh2/" target="_blank" rel="noopener">LinkedIn <span class="k">nakoh2</span><span class="ar">↗</span></a>
+        <a class="lk" href="https://github.com/NakOh" target="_blank" rel="noopener">GitHub <span class="k">NakOh</span><span class="ar">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner"><span>© 2026 김민수 · NakOh</span><span>데이터 기준 2026-11-05 · GitHub 커밋, LinkedIn, 텔레그램 공개 페이지</span></div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+  var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var sm = function (x, a, b) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+
+  /* ===== commit field ===== */
+  var DATA = {
+    2014: { personal: 56 }, 2015: { personal: 171 }, 2016: { personal: 288 },
+    2017: { client: 28, personal: 45 }, 2018: { client: 823 },
+    2019: { client: 757, server: 9, web: 94 },
+    2020: { client: 163, server: 1231, web: 77, db: 90 },
+    2021: { client: 802, server: 342, web: 35, personal: 2 },
+    2022: { client: 1009, server: 186, tool: 39 },
+    2023: { client: 66, server: 166, web: 58, db: 3, tool: 5, personal: 43 },
+    2024: { client: 48, server: 85, web: 9, personal: 36 },
+    2025: { server: 16, web: 52, tool: 5, personal: 301 },
+    2026: { client: 18, server: 14, web: 67, tool: 54, personal: 3222 }
+  };
+  var TYPES = ['client', 'server', 'web', 'db', 'tool', 'personal'];
+  var COLORS = ['#F2A93B', '#2FD0BA', '#8EA0FF', '#FF7A66', '#8A96A0', '#F4EFE6'];
+  var NAMES = ['클라이언트', '서버', '웹·관리자', 'DB', '도구', '개인 저장소'];
+  var REAL = [3714, 2049, 392, 93, 103, 4164];
+  var YEARS = [];
+  for (var yy0 = 2014; yy0 <= 2026; yy0++) YEARS.push(yy0);
+  var YEAR_REAL = YEARS.map(function (y) { var s = 0; for (var k in DATA[y]) s += DATA[y][k]; return s; });
+
+  var scrolly = document.getElementById('top');
+  var stage = document.getElementById('stage');
+  var canvas = document.getElementById('field');
+  var ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
+  var heroCopy = document.getElementById('heroCopy');
+  var cap1 = document.getElementById('cap1');
+  var cap2 = document.getElementById('cap2');
+  var dotNote = document.getElementById('dotNote');
+
+  var W = 0, H = 0, DPR = 1, factor = 0, N = 0;
+  var ptype, yIdx, kYear, kType, ax, ay, az, dl, px, py, tlx, tly, clx, cly, dep;
+  var groups = [], yearCount = [], typeCount = [];
+  var S = { cx: 0, cy: 0, R: 1 }, T = {}, C = { c: 1, centers: [], rad: [] };
+  var pointer = { x: -9999, y: -9999, on: false };
+  var running = false, started = 0, rafId = 0;
+
+  function build() {
+    var f = window.innerWidth < 760 ? 3 : 1;
+    if (f === factor && N) return false;
+    factor = f;
+    var t0 = [], y0 = [], k0 = [];
+    yearCount = [];
+    YEARS.forEach(function (yr, yi) {
+      var k = 0;
+      TYPES.forEach(function (tp, ti) {
+        var n = Math.round((DATA[yr][tp] || 0) / factor);
+        for (var i = 0; i < n; i++) { t0.push(ti); y0.push(yi); k0.push(k++); }
+      });
+      yearCount.push(k);
+    });
+    N = t0.length;
+    ptype = new Uint8Array(t0); yIdx = new Uint8Array(y0); kYear = new Uint16Array(k0);
+    kType = new Uint16Array(N); typeCount = [0, 0, 0, 0, 0, 0];
+    var i;
+    for (i = 0; i < N; i++) kType[i] = typeCount[ptype[i]]++;
+    var g = [[], [], [], [], [], []];
+    for (i = 0; i < N; i++) g[ptype[i]].push(i);
+    groups = g.map(function (a) { return new Uint32Array(a); });
+    ax = new Float32Array(N); ay = new Float32Array(N); az = new Float32Array(N);
+    dl = new Float32Array(N); px = new Float32Array(N); py = new Float32Array(N); dep = new Float32Array(N);
+    tlx = new Float32Array(N); tly = new Float32Array(N); clx = new Float32Array(N); cly = new Float32Array(N);
+    var GA = Math.PI * (3 - Math.sqrt(5));
+    for (i = 0; i < N; i++) {
+      var v = -1 + 2 * (i + 0.5) / N, r = Math.sqrt(1 - v * v), th = i * GA;
+      ax[i] = Math.cos(th) * r; ay[i] = v; az[i] = Math.sin(th) * r;
+      dl[i] = Math.random() * 0.4;
+    }
+    if (dotNote) dotNote.textContent = (factor === 1 ? '점 하나 = 커밋 하나' : '점 하나 = 커밋 3개') + ' · LNPGames 저장소 129개 + 개인 저장소 58개';
+    return true;
+  }
+
+  function layout(fresh) {
+    var rect = stage.getBoundingClientRect();
+    W = Math.max(300, rect.width); H = Math.max(420, rect.height);
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var mobile = W < 760, i;
+    S = mobile ? { cx: W * 0.5, cy: H * 0.72, R: Math.min(W * 0.4, H * 0.22) }
+               : { cx: W * 0.7, cy: H * 0.53, R: Math.min(W * 0.25, H * 0.35) };
+    // timeline columns
+    var left = mobile ? 14 : W * 0.06, right = mobile ? W - 14 : W * 0.94;
+    var topY = mobile ? H * 0.47 : H * 0.36, bottom = mobile ? H * 0.88 : H * 0.86;
+    var slot = (right - left) / YEARS.length, colW = slot * 0.78;
+    var maxN = Math.max.apply(null, yearCount), s = 9, per = 1;
+    for (; s > 1.2; s -= 0.1) { per = Math.max(1, Math.floor(colW / s)); if (Math.ceil(maxN / per) * s <= bottom - topY) break; }
+    T = { left: left, slot: slot, s: s, per: per, bottom: bottom, mobile: mobile };
+    for (i = 0; i < N; i++) {
+      var yi = yIdx[i], k = kYear[i], c = k % per, r = (k / per) | 0;
+      var x0 = left + yi * slot + (slot - per * s) / 2;
+      tlx[i] = x0 + c * s + s / 2; tly[i] = bottom - r * s - s / 2;
+    }
+    // clusters (phyllotaxis discs)
+    var rows = mobile ? [[0, 1], [2, 3, 4], [5]] : [[0, 1, 2, 3, 4, 5]];
+    var aTop = mobile ? H * 0.42 : H * 0.36, aBot = mobile ? H * 0.92 : H * 0.84;
+    var availW = W - (mobile ? 32 : W * 0.14), gapX = mobile ? 20 : W * 0.03, gapY = mobile ? 44 : 56;
+    var sq = typeCount.map(function (n) { return Math.sqrt(Math.max(1, n)); });
+    var cw = Infinity, hsum = 0;
+    rows.forEach(function (row) {
+      var sum = 0, mx = 0;
+      row.forEach(function (t) { sum += 2 * sq[t]; mx = Math.max(mx, sq[t]); });
+      cw = Math.min(cw, (availW - gapX * (row.length - 1)) / sum);
+      hsum += 2 * mx;
+    });
+    var cc = Math.min(cw, (aBot - aTop - gapY * rows.length) / hsum);
+    C.c = cc; C.centers = []; C.rad = [];
+    var yCur = aTop;
+    rows.forEach(function (row) {
+      var rowR = 0, rowW = gapX * (row.length - 1);
+      row.forEach(function (t) { rowR = Math.max(rowR, sq[t] * cc); rowW += 2 * sq[t] * cc; });
+      var x = (W - rowW) / 2, cy = yCur + rowR;
+      row.forEach(function (t) { var rr = sq[t] * cc; C.centers[t] = [x + rr, cy]; C.rad[t] = rr; x += 2 * rr + gapX; });
+      yCur = cy + rowR + gapY;
+    });
+    var used = yCur - aTop, shift = (aBot - aTop - used) / 2;
+    if (shift > 0) TYPES.forEach(function (_, t) { C.centers[t][1] += shift; });
+    var GA = 2.39996323;
+    for (i = 0; i < N; i++) {
+      var tp = ptype[i], j = kType[i], rad = cc * Math.sqrt(j + 0.5), an = j * GA;
+      clx[i] = C.centers[tp][0] + Math.cos(an) * rad; cly[i] = C.centers[tp][1] + Math.sin(an) * rad;
+    }
+    if (fresh) {
+      for (i = 0; i < N; i++) {
+        var a = Math.random() * Math.PI * 2, d = Math.max(W, H) * (0.55 + Math.random() * 0.7);
+        px[i] = S.cx + Math.cos(a) * d; py[i] = S.cy + Math.sin(a) * d;
+      }
+      started = performance.now();
+    }
+  }
+
+  function progress() {
+    var r = scrolly.getBoundingClientRect();
+    var range = scrolly.offsetHeight - stage.offsetHeight;
+    return range > 0 ? clamp(-r.top / range, 0, 1) : 0;
+  }
+  function setLayer(el, v, dy) {
+    if (!el) return;
+    el.style.opacity = v.toFixed(3);
+    el.style.transform = 'translate3d(0,' + (dy * (1 - v)).toFixed(1) + 'px,0)';
+    el.style.visibility = v < 0.02 ? 'hidden' : 'visible';
+  }
+
+  function draw(m1, m2) {
+    ctx.clearRect(0, 0, W, H);
+    var s0 = T.mobile ? 1.5 : 1.8, s1 = Math.max(1, T.s * 0.74), s2 = Math.max(1, Math.min(3.4, C.c * 1.3));
+    var sz = s0 + (s1 - s0) * m1; sz = sz + (s2 - sz) * m2;
+    var hf = sz / 2, depthOn = m1 < 0.98, t, j, i, g;
+    for (t = 0; t < 6; t++) {
+      g = groups[t]; ctx.fillStyle = COLORS[t];
+      if (depthOn) {
+        ctx.globalAlpha = 0.25 + 0.75 * m1;
+        for (j = 0; j < g.length; j++) { i = g[j]; if (dep[i] > 0) ctx.fillRect(px[i] - hf, py[i] - hf, sz, sz); }
+        ctx.globalAlpha = 1;
+        for (j = 0; j < g.length; j++) { i = g[j]; if (dep[i] <= 0) ctx.fillRect(px[i] - hf, py[i] - hf, sz, sz); }
+      } else {
+        ctx.globalAlpha = 1;
+        for (j = 0; j < g.length; j++) { i = g[j]; ctx.fillRect(px[i] - hf, py[i] - hf, sz, sz); }
+      }
+    }
+    var la = m1 * (1 - m2);
+    if (la > 0.01) {
+      ctx.globalAlpha = la; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      for (var yi = 0; yi < YEARS.length; yi++) {
+        var cx = T.left + yi * T.slot + T.slot / 2;
+        ctx.font = (T.mobile ? '10px' : '12px') + ' "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillStyle = '#7C868F';
+        ctx.fillText(T.mobile ? "'" + String(YEARS[yi]).slice(2) : String(YEARS[yi]), cx, T.bottom + (T.mobile ? 16 : 22));
+        if (YEAR_REAL[yi] >= 100 && (!T.mobile || YEAR_REAL[yi] >= 700)) {
+          var rowsN = Math.ceil(yearCount[yi] / T.per);
+          ctx.fillStyle = '#F2EFE9';
+          ctx.fillText(fmt(YEAR_REAL[yi]), cx, T.bottom - rowsN * T.s - 8);
+        }
+      }
+    }
+    if (m2 > 0.01) {
+      ctx.globalAlpha = m2; ctx.textAlign = 'center';
+      var fs = T.mobile ? 11 : 13;
+      for (t = 0; t < 6; t++) {
+        var c = C.centers[t], ly = c[1] + C.rad[t] + fs + 8;
+        ctx.font = '700 ' + fs + 'px "IBM Plex Sans KR", sans-serif';
+        ctx.fillStyle = COLORS[t];
+        ctx.fillText(NAMES[t], c[0], ly);
+        ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillStyle = '#F2EFE9';
+        ctx.fillText(fmt(REAL[t]), c[0], ly + fs + 5);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(now) {
+    if (!running) { rafId = 0; return; }
+    rafId = requestAnimationFrame(frame);
+    var p = progress();
+    var m1 = sm(p, 0.14, 0.40), m2 = sm(p, 0.58, 0.84);
+    setLayer(heroCopy, 1 - sm(p, 0.03, 0.13), -50);
+    setLayer(cap1, sm(p, 0.30, 0.40) * (1 - sm(p, 0.55, 0.63)), 30);
+    setLayer(cap2, sm(p, 0.76, 0.86), 30);
+    var ang = reduce ? 0.6 : now * 0.00011, ca = Math.cos(ang), sa = Math.sin(ang);
+    var ct = Math.cos(0.38), st = Math.sin(0.38);
+    var intro = reduce ? 1 : clamp((now - started) / 1600, 0, 1);
+    var k = reduce ? 1 : 0.035 + 0.135 * intro;
+    var PR = T.mobile ? 60 : 96, PR2 = PR * PR, pon = pointer.on && !reduce;
+    for (var i = 0; i < N; i++) {
+      var x = ax[i] * ca - az[i] * sa, z = ax[i] * sa + az[i] * ca, yv = ay[i];
+      var y2 = yv * ct - z * st, z2 = yv * st + z * ct, pr = 1 / (1 + z2 * 0.38);
+      var sx = S.cx + x * S.R * pr, sy = S.cy - y2 * S.R * pr, tx, ty, t;
+      dep[i] = z2;
+      if (m2 > 0) {
+        t = ease(clamp((m2 - dl[i]) / 0.6, 0, 1));
+        tx = tlx[i] + (clx[i] - tlx[i]) * t; ty = tly[i] + (cly[i] - tly[i]) * t;
+      } else {
+        t = ease(clamp((m1 - dl[i]) / 0.6, 0, 1));
+        tx = sx + (tlx[i] - sx) * t; ty = sy + (tly[i] - sy) * t;
+        if (t > 0 && t < 1) { var sw = Math.sin(t * Math.PI) * 26 * (dl[i] - 0.2); tx += sw; ty -= sw * 0.6; }
+      }
+      if (pon) {
+        var dx = tx - pointer.x, dy = ty - pointer.y, d2 = dx * dx + dy * dy;
+        if (d2 < PR2) { var d = Math.sqrt(d2) || 1, f = (PR - d) / PR * 40; tx += dx / d * f; ty += dy / d * f; }
+      }
+      px[i] += (tx - px[i]) * k; py[i] += (ty - py[i]) * k;
+    }
+    draw(m1, m2);
+  }
+
+  function start() { if (!rafId) rafId = requestAnimationFrame(frame); }
+
+  if (ctx && scrolly && stage) {
+    build(); layout(true);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        running = es[0].isIntersecting && !document.hidden;
+        if (running) start();
+      }).observe(scrolly);
+    } else { running = true; start(); }
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) running = false;
+      else { var r = scrolly.getBoundingClientRect(); running = r.bottom > 0 && r.top < window.innerHeight; if (running) start(); }
+    });
+    stage.addEventListener('pointermove', function (e) {
+      var r = stage.getBoundingClientRect(); pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top; pointer.on = true;
+    });
+    stage.addEventListener('pointerleave', function () { pointer.on = false; });
+    var rz = 0;
+    window.addEventListener('resize', function () {
+      clearTimeout(rz);
+      rz = setTimeout(function () { var changed = build(); layout(changed); }, 160);
+    });
+  }
+
+  /* ===== counters ===== */
+  function countUp(el, dur) {
+    var target = +el.getAttribute('data-count');
+    if (!target || reduce) return;
+    var t0 = performance.now();
+    el.textContent = '0';
+    (function tick(now) {
+      var t = clamp((now - t0) / dur, 0, 1), v = 1 - Math.pow(1 - t, 4);
+      el.textContent = fmt(target * v);
+      if (t < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+  if (heroCopy) Array.prototype.forEach.call(heroCopy.querySelectorAll('[data-count]'), function (el) { countUp(el, 1800); });
+
+  /* ===== reveal / in-view ===== */
+  var below = function (el) { return el.getBoundingClientRect().top > window.innerHeight * 0.92; };
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.remove('pre');
+        if (el.id === 'fan') el.classList.remove('stacked');
+        if (el.id === 'bars') el.classList.remove('pre');
+        Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), function (c) { countUp(c, 1600); });
+        if (el.hasAttribute('data-count')) countUp(el, 1600);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(document.querySelectorAll('.rv'), function (el) {
+      if (below(el)) { el.classList.add('pre'); io.observe(el); }
+    });
+    var fan = document.getElementById('fan');
+    if (fan && below(fan)) { fan.classList.add('stacked'); io.observe(fan); }
+    var bars = document.getElementById('bars');
+    if (bars && below(bars)) { bars.classList.add('pre'); io.observe(bars); }
+  }
+
+  /* ===== scroll-linked chrome ===== */
+  var prog = document.getElementById('prog'), nav = document.getElementById('nav');
+  var tl = document.getElementById('tl'), tlFill = document.getElementById('tlFill');
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (prog) prog.style.transform = 'scaleX(' + (h > 0 ? clamp(window.scrollY / h, 0, 1) : 0).toFixed(4) + ')';
+    if (nav) nav.classList.toggle('solid', window.scrollY > 40);
+    if (tl && tlFill && !reduce) {
+      var r = tl.getBoundingClientRect();
+      tlFill.style.setProperty('--p', clamp((window.innerHeight * 0.62 - r.top) / r.height, 0, 1).toFixed(4));
+    }
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  /* ===== pointer effects ===== */
+  if (fine && !reduce) {
+    var glow = document.getElementById('glow'), gx = -9999, gy = 0, gq = false;
+    window.addEventListener('pointermove', function (e) {
+      gx = e.clientX; gy = e.clientY;
+      if (!gq) { gq = true; requestAnimationFrame(function () { gq = false; if (glow) glow.style.transform = 'translate3d(' + (gx - 320) + 'px,' + (gy - 320) + 'px,0)'; }); }
+    }, { passive: true });
+    Array.prototype.forEach.call(document.querySelectorAll('.sv'), function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        card.style.setProperty('--mx', x + 'px'); card.style.setProperty('--my', y + 'px');
+        card.style.setProperty('--ry', ((x / r.width - 0.5) * 7).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', ((0.5 - y / r.height) * 7).toFixed(2) + 'deg');
+      });
+      card.addEventListener('pointerleave', function () { card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg'); });
+    });
+  }
+})();
+</script>
+</body>
+</html>
