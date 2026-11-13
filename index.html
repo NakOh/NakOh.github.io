@@ -123,7 +123,7 @@ ul { margin: 0; }
 .mq.rev .track { animation-direction: reverse; animation-duration: 72s; }
 .track span { font-family: var(--f-kr); font-size: clamp(42px, 7.5vw, 110px); line-height: 1.12; padding-right: .55em; white-space: nowrap; }
 .mq.rev .track span { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; font-size: clamp(30px, 5vw, 72px); letter-spacing: -0.02em; }
-.track .o { color: transparent; -webkit-text-stroke: 1.2px var(--line2); }
+.track .o { color: transparent; -webkit-text-stroke: 1.2px var(--faint); }
 .track .a { color: var(--client); }
 .track .t { color: var(--server); }
 .track .v { color: var(--w3); }
@@ -333,7 +333,7 @@ ul { margin: 0; }
 
 /* contact */
 .contact .big { font-family: var(--f-kr); font-size: clamp(52px, 10vw, 150px); line-height: 1; }
-.contact .big span { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--line2); }
+.contact .big span { display: block; color: transparent; background: linear-gradient(100deg, var(--client), var(--server) 55%, var(--personal)); -webkit-background-clip: text; background-clip: text; }
 .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
 .lk { display: inline-flex; align-items: center; gap: 14px; padding: 16px 24px; border-radius: 999px; border: 1px solid var(--line2); text-decoration: none; font-size: 16px; transition: border-color .3s, background .3s; }
 .lk .k { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
