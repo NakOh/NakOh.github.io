@@ -38,6 +38,7 @@ html, body { margin: 0; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; overflow-x: hidden; word-break: keep-all; overflow-wrap: break-word; }
 p, li, blockquote, small { text-wrap: pretty; }
+body { font-synthesis: none; }
 h1, h2, h3, h4 { word-break: keep-all; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -336,7 +337,7 @@ ul { margin: 0; }
 .ec p { color: var(--muted); font-size: 14px; }
 
 /* contact */
-.contact .big { font-family: var(--f-kr); font-size: clamp(52px, 10vw, 150px); line-height: 1; }
+.contact .big { font-family: var(--f-kr); font-weight: 400; font-size: clamp(52px, 10vw, 150px); line-height: 1.08; }
 .contact .big span { display: block; color: transparent; background: linear-gradient(100deg, var(--client), var(--server) 55%, var(--personal)); -webkit-background-clip: text; background-clip: text; }
 .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
 .lk { display: inline-flex; align-items: center; gap: 14px; padding: 16px 24px; border-radius: 999px; border: 1px solid var(--line2); text-decoration: none; font-size: 16px; transition: border-color .3s, background .3s; }
@@ -1158,7 +1159,7 @@ main, .marquee { position: relative; z-index: 1; }
         <article class="ec"><span class="y">2015 – 2016</span><h3>VESS · VesselDefense</h3><p>CIEN의 cocos2d-x 게임(안드로이드 빌드 담당)과 Unity 디펜스 게임(레이저 무기 구현).</p></article>
         <article class="ec"><span class="y">2017</span><h3>JumpPharaoh · ElephantJump</h3><p>혼자 만든 Unity 게임. Tizen 스토어 100위권 목표, 구글 서비스·Unity Ads 연동.</p></article>
         <article class="ec"><span class="y">2017 – 2018</span><h3>Shooting Star · Heroes · Wild Bunny</h3><p>게임 외주 3종. 이후 LNPGames 미니게임 라인업으로 이어짐.</p></article>
-        <article class="ec"><span class="y">2023 – 2024</span><h3>DoctorSiren</h3><p>안드로이드 원격 점검 지원 앱. SMS 인증, 원격 요청 흐름, 안드로이드 14 대응.</p></article>
+        <article class="ec"><span class="y">2023 – 2024 · 외주</span><h3>DoctorSiren</h3><p>외주로 개발한 안드로이드 원격 점검 지원 앱. SMS 인증, 원격 요청 흐름, 안드로이드 14 대응.</p></article>
       </div>
     </div>
   </section>
