@@ -230,7 +230,7 @@ ul { margin: 0; }
 @keyframes run { 0% { left: 3%; opacity: 0; } 6% { opacity: 1; } 94% { opacity: 1; } 100% { left: 95%; opacity: 0; } }
 
 /* web3 */
-.counters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 64px; }
+.counters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .counter { border-top: 1px solid var(--line2); padding-top: 20px; display: grid; gap: 8px; align-content: start; }
 .counter b { font-family: var(--f-display); font-weight: 900; font-size: clamp(44px, 6vw, 92px); line-height: .92; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
 .counter:nth-child(1) b { color: var(--w3); }
@@ -338,10 +338,51 @@ footer { border-top: 1px solid var(--line); position: relative; z-index: 1; }
 footer .inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 28px 40px; font-family: var(--f-mono); font-size: 12px; color: var(--faint); }
 main, .marquee { position: relative; z-index: 1; }
 
+
+/* web2 / web3 identity */
+.dom { font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: .14em; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line2); color: var(--muted); display: inline-block; white-space: nowrap; line-height: 1.4; }
+.dom.d2 { color: var(--server); border-color: rgba(47, 208, 186, .5); background: rgba(47, 208, 186, .08); }
+.dom.d3 { color: var(--w3); border-color: rgba(180, 156, 255, .5); background: rgba(180, 156, 255, .08); }
+.dom.dg { color: var(--client); border-color: rgba(242, 169, 59, .5); background: rgba(242, 169, 59, .08); }
+.t2 { color: var(--server); }
+.t3 { color: var(--w3); }
+.map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.mapc { --mc: var(--server); border: 1px solid var(--line); border-top: 3px solid var(--mc); border-radius: 24px; padding: 26px; display: grid; gap: 18px; align-content: start; }
+.mapc.w2 { background: linear-gradient(180deg, rgba(47, 208, 186, .07), var(--panel) 45%); }
+.mapc.w3 { --mc: var(--w3); background: linear-gradient(180deg, rgba(180, 156, 255, .08), var(--panel) 45%); }
+.maph { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.maph b { font-size: 17px; }
+.maph .ct { margin-left: auto; font-family: var(--f-mono); font-size: 12px; color: var(--faint); }
+.grp { display: grid; gap: 8px; }
+.grp h4 { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+.grp a { display: grid; gap: 2px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); text-decoration: none; font-weight: 700; transition: border-color .25s, transform .3s var(--ease), background .25s; }
+.grp a small { font-weight: 400; font-size: 13px; color: var(--muted); }
+.grp a:hover { border-color: var(--mc); transform: translateX(6px); background: color-mix(in srgb, var(--mc) 8%, transparent); }
+.shared { display: flex; align-items: center; gap: 14px; margin: 56px 0 16px; flex-wrap: wrap; }
+.shared p { color: var(--muted); }
+.legend2 { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.legend2 span { display: inline-flex; align-items: center; gap: 8px; }
+.legend2 i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+#web2 > .inner, #web3 > .inner { position: relative; }
+.bigtag { position: absolute; right: var(--gut-r); top: -.18em; font-family: var(--f-display); font-weight: 900; font-size: clamp(90px, 18vw, 260px); line-height: 1; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px var(--bc); opacity: .32; pointer-events: none; user-select: none; }
+.grp-head { display: flex; align-items: center; gap: 14px; margin: 64px 0 18px; flex-wrap: wrap; }
+.grp-head.first { margin-top: 0; }
+.grp-head h3 { font-family: var(--f-kr); font-weight: 400; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.15; }
+.grp-head p { color: var(--muted); font-size: 15px; flex-basis: 100%; }
+#web2 .pj { --accent: var(--server); }
+#web2 .pj::after, #web3 .pj::after { content: ""; position: absolute; left: 0; top: 24px; bottom: 24px; width: 3px; border-radius: 0 3px 3px 0; background: var(--dc); }
+#web2 .pj { --dc: var(--server); }
+#web3 .pj { --dc: var(--w3); }
+.pj .row1 .dom { margin-right: auto; }
+.tools2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tl-item h3 .dom { margin-left: 8px; vertical-align: middle; font-size: 10px; padding: 2px 8px; }
+.nav nav a.n2 { color: var(--server); }
+.nav nav a.n3 { color: var(--w3); }
+@media (max-width: 980px) { .map, .tools2 { grid-template-columns: minmax(0, 1fr); } }
+
 @media (max-width: 1100px) {
   .hero-copy > * { max-width: 54%; }
   .traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .counters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gw { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 980px) {
@@ -392,8 +433,8 @@ main, .marquee { position: relative; z-index: 1; }
     <nav aria-label="섹션">
       <a href="#who">어떤 사람</a>
       <a href="#career">경력</a>
-      <a href="#web2">Web2</a>
-      <a href="#web3">Web3</a>
+      <a class="n2" href="#web2">Web2</a>
+      <a class="n3" href="#web3">Web3</a>
       <a href="#games">게임</a>
       <a href="#videos">영상</a>
     </nav>
@@ -411,7 +452,7 @@ main, .marquee { position: relative; z-index: 1; }
       <ul class="facts">
         <li><b data-count="10515">10,515</b>커밋 · 2014–2026</li>
         <li><b data-count="2065">2,065</b>블로그 글 · 2018–</li>
-        <li><b data-count="2934">2,934</b>텔레그램 구독자</li>
+        <li><b data-count="2934">2,934</b>텔레그램 구독자 · 2018–</li>
       </ul>
       <p class="hint">스크롤하면 커밋 10,515개가 움직입니다 <span>↓</span></p>
     </div>
@@ -442,8 +483,8 @@ main, .marquee { position: relative; z-index: 1; }
     <span>7포커</span><span class="o">바둑이</span><span class="a">홀덤</span><span class="o">하이로우</span><span>바카라</span><span class="o">맞고</span><span class="a">섯다</span><span class="o">블랙잭</span><span>룰렛</span><span class="o">슬롯</span>
   </div></div>
   <div class="mq rev" aria-hidden="true"><div class="track">
-    <span class="v">Rebatify</span><span class="o">ParkingPick</span><span>Donzomyo</span><span class="o">TT Company</span><span class="t">CreatorStudio</span><span class="o">LLMGateway</span><span class="v">KorbitMaker</span><span class="o">TossTrader</span><span>MingsBog</span>
-    <span class="v">Rebatify</span><span class="o">ParkingPick</span><span>Donzomyo</span><span class="o">TT Company</span><span class="t">CreatorStudio</span><span class="o">LLMGateway</span><span class="v">KorbitMaker</span><span class="o">TossTrader</span><span>MingsBog</span>
+    <span class="v">Rebatify</span><span class="t">ParkingPick</span><span class="o">Donzomyo</span><span class="v">KorbitMaker</span><span class="t">CreatorStudio</span><span class="o">TT Company</span><span class="v">MingsBog</span><span class="t">TossTrader</span><span class="o">Arbitrage</span>
+    <span class="v">Rebatify</span><span class="t">ParkingPick</span><span class="o">Donzomyo</span><span class="v">KorbitMaker</span><span class="t">CreatorStudio</span><span class="o">TT Company</span><span class="v">MingsBog</span><span class="t">TossTrader</span><span class="o">Arbitrage</span>
   </div></div>
 </div>
 
@@ -476,7 +517,7 @@ main, .marquee { position: relative; z-index: 1; }
         <article class="trait rv" style="--c: var(--client)">
           <span class="no">01 · 기록</span>
           <h3>8년째, 2,065개의 글을 쓴 사람</h3>
-          <p>2018년부터 블로그에 국내 거래소 약 200곳을 정리했고, 문을 닫은 거래소까지 <b>1,357개의 글</b>로 남겼습니다. 코드도 같습니다. 저장소마다 인수인계 문서와 날짜가 붙은 결정 기록, 장애 회고가 쌓여 있습니다.</p>
+          <p>2018년 10월 블로그와 텔레그램 채널을 함께 열고 국내 거래소 약 200곳을 정리했습니다. 문을 닫은 거래소까지 <b>1,357개의 글</b>로 남겼습니다. 코드도 같습니다. 저장소마다 인수인계 문서와 날짜가 붙은 결정 기록, 장애 회고가 쌓여 있습니다.</p>
           <div class="ev"><q>당시 테스트는 충분하지 않았다</q><cite>KorbitMaker · docs/AUDIT-2026-09-19.md</cite></div>
         </article>
         <article class="trait rv" style="--c: var(--server); --d: 80ms">
@@ -522,32 +563,52 @@ main, .marquee { position: relative; z-index: 1; }
       </div>
       <div class="tl" id="tl">
         <div class="tl-rail"></div><div class="tl-fill" id="tlFill"></div>
-        <div class="tl-item rv" style="--c: var(--tool)"><div class="y">2015<small>2011 – 2017 중앙대 컴퓨터공학</small></div><div class="body"><h3>게임 제작 동아리 CIEN <span class="org">· 15대 회장</span></h3><p>libGDX 안드로이드 RPG <b>‘1레벨 용사님’</b>에서 전투·스킬 시스템(캐스팅, 버프, 출혈)을 맡아 268커밋을 남겼습니다. 팀에서 두 번째로 많은 커밋입니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--tool)"><div class="y">2016</div><div class="body"><h3>‘뿌롱이네 농장’ 공동 개발 <span class="org">· 동아리연합회</span></h3><p>Unity 농장 시뮬레이션을 공동으로 이끌었습니다(커밋 259개, 절반). LNP와의 첫 협업입니다. 같은 해 중앙동아리연합회에서 동아리 활동 지원을 맡았습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: color-mix(in srgb, var(--client) 60%, var(--tool))"><div class="y">2017.03</div><div class="body"><h3>Game Developer <span class="org">· 111퍼센트</span></h3><p>슈퍼 캐주얼 게임 WarZ.io, 99TAN, Bubbloo, Whitehole, Dear My Love 개발에 참여했습니다. 플레이 영상은 아래 영상 섹션에 있습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--client)"><div class="y">2017.10<small>LNPGames 합류</small></div><div class="body"><h3>첫 프로젝트를 거의 혼자 <span class="org">· 플레이포커</span><span class="now">NOW</span></h3><p>7포커, 하이로우, 바둑이, 바카라, 슬롯, 룰렛을 담은 멀티 게임 앱입니다. 커밋의 <b>98%</b>가 직접 작업입니다. 첫 해에 모든 게임이 쓰는 로직을 공통 클래스로 빼는 리팩터링을 했습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--client)"><div class="y">2018</div><div class="body"><h3>플레이맞고, 미니게임 22종, 그리고 블로그</h3><p>맞고를 인수받아 섯다와 한 앱으로 합치고, 1시간마다 장기 플레이 경고를 넣었습니다. 캐주얼 미니게임 22종을 리스킨해 냈습니다. 10월에는 거래소를 기록하는 블로그를 시작했습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--w3)"><div class="y">2019</div><div class="body"><h3>회사 거래소 운영</h3><p>BTC·ETH·XRP와 자체 토큰을 다루는 거래소의 웹, 관리자, 코인별 코어 서비스를 맡았습니다. 입출금 운영과 서버 이전부터 2021년 종료 처리까지 했습니다. 블로그에는 국내 거래소 140곳 정리 글을 올렸습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--server)"><div class="y">2020</div><div class="body"><h3>서버로 넘어간 해</h3><p>소셜 카지노 로비 서버, 실시간 테이블 게임 서버, MySQL 스키마를 만들었습니다. Colyseus를 포크해 <b>npm 패키지로 배포</b>했습니다. 이 해 서버 커밋 1,231개가 클라이언트 커밋(163개)을 처음 넘었습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--client)"><div class="y">2022</div><div class="body"><h3>슬롯 공통 엔진</h3><p>Cocos Creator로 고정·메가웨이·캐스케이딩 릴을 모두 돌리는 슬롯 엔진을 만들었습니다. <b>795커밋</b>으로 가장 큰 작업입니다. 엔진 자체의 버그는 Cocos 포크에서 직접 고쳤습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--server)"><div class="y">2023</div><div class="body"><h3>C++ TCP 서버 프레임워크</h3><p>홀덤 서버를 상속형 베이스 클래스로 다시 짜서 7개 포커 플랫폼이 같이 쓰게 했습니다(2026년 리눅스 이식). 회사 밖에서는 첫 개인 크립토 봇을 만들었습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--w3)"><div class="y">2025</div><div class="body"><h3>무료 자동매매 봇 배포, 영어권 채널</h3><p>거래소 이벤트용 자동매매 봇을 직접 만들어 블로그와 유튜브로 무료 배포했습니다. 12월에는 영어권 텔레그램 채널 Rebatify Global을 열었습니다.</p></div></div>
-        <div class="tl-item rv" style="--c: var(--personal)"><div class="y">2026<small>개인 커밋 3,222개</small></div><div class="body"><h3>AI 인프라 위의 서비스들 <span class="now">NOW</span></h3><p>Rebatify(5월), TossTrader(7월), ParkingPick·돈좀요(8월), LLMGateway(9월), CreatorStudio·KorbitMaker·Arbitrage Desk(10월), TT COMPANY 외주까지 <b>새 프로젝트 13개</b>를 시작했습니다. 회사에서는 AI 에셋 제작 도구를 일주일 만에 만들었습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--tool)"><div class="y">2015<small>2011 – 2017 중앙대 컴퓨터공학</small></div><div class="body"><h3>게임 제작 동아리 CIEN <span class="org">· 15대 회장</span><span class="dom dg">GAME</span></h3><p>libGDX 안드로이드 RPG <b>‘1레벨 용사님’</b>에서 전투·스킬 시스템(캐스팅, 버프, 출혈)을 맡아 268커밋을 남겼습니다. 팀에서 두 번째로 많은 커밋입니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--tool)"><div class="y">2016</div><div class="body"><h3>‘뿌롱이네 농장’ 공동 개발 <span class="org">· 동아리연합회</span><span class="dom dg">GAME</span></h3><p>Unity 농장 시뮬레이션을 공동으로 이끌었습니다(커밋 259개, 절반). LNP와의 첫 협업입니다. 같은 해 중앙동아리연합회에서 동아리 활동 지원을 맡았습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: color-mix(in srgb, var(--client) 60%, var(--tool))"><div class="y">2017.03</div><div class="body"><h3>Game Developer <span class="org">· 111퍼센트</span><span class="dom dg">GAME</span></h3><p>슈퍼 캐주얼 게임 WarZ.io, 99TAN, Bubbloo, Whitehole, Dear My Love 개발에 참여했습니다. 플레이 영상은 아래 영상 섹션에 있습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--client)"><div class="y">2017.10<small>LNPGames 합류</small></div><div class="body"><h3>첫 프로젝트를 거의 혼자 <span class="org">· 플레이포커</span><span class="now">NOW</span><span class="dom dg">GAME</span></h3><p>7포커, 하이로우, 바둑이, 바카라, 슬롯, 룰렛을 담은 멀티 게임 앱입니다. 커밋의 <b>98%</b>가 직접 작업입니다. 첫 해에 모든 게임이 쓰는 로직을 공통 클래스로 빼는 리팩터링을 했습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--client)"><div class="y">2018</div><div class="body"><h3>플레이맞고, 미니게임 22종, 블로그와 텔레그램<span class="dom dg">GAME</span><span class="dom d3">WEB3</span></h3><p>맞고를 인수받아 섯다와 한 앱으로 합치고, 1시간마다 장기 플레이 경고를 넣었습니다. 캐주얼 미니게임 22종을 리스킨해 냈습니다. 10월에는 거래소를 기록하는 블로그와 텔레그램 채널 ‘밍쓰의 크립토 이벤트 창고’를 함께 시작했습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--w3)"><div class="y">2019</div><div class="body"><h3>회사 거래소 운영<span class="dom d3">WEB3</span></h3><p>BTC·ETH·XRP와 자체 토큰을 다루는 거래소의 웹, 관리자, 코인별 코어 서비스를 맡았습니다. 입출금 운영과 서버 이전부터 2021년 종료 처리까지 했습니다. 블로그에는 국내 거래소 140곳 정리 글을 올렸습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--server)"><div class="y">2020</div><div class="body"><h3>서버로 넘어간 해<span class="dom dg">GAME</span></h3><p>소셜 카지노 로비 서버, 실시간 테이블 게임 서버, MySQL 스키마를 만들었습니다. Colyseus를 포크해 <b>npm 패키지로 배포</b>했습니다. 이 해 서버 커밋 1,231개가 클라이언트 커밋(163개)을 처음 넘었습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--client)"><div class="y">2022</div><div class="body"><h3>슬롯 공통 엔진<span class="dom dg">GAME</span></h3><p>Cocos Creator로 고정·메가웨이·캐스케이딩 릴을 모두 돌리는 슬롯 엔진을 만들었습니다. <b>795커밋</b>으로 가장 큰 작업입니다. 엔진 자체의 버그는 Cocos 포크에서 직접 고쳤습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--server)"><div class="y">2023</div><div class="body"><h3>C++ TCP 서버 프레임워크<span class="dom dg">GAME</span><span class="dom d3">WEB3</span></h3><p>홀덤 서버를 상속형 베이스 클래스로 다시 짜서 7개 포커 플랫폼이 같이 쓰게 했습니다(2026년 리눅스 이식). 회사 밖에서는 첫 개인 크립토 봇을 만들었습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--w3)"><div class="y">2025</div><div class="body"><h3>무료 자동매매 봇 배포, 영어권 채널<span class="dom d3">WEB3</span></h3><p>거래소 이벤트용 자동매매 봇을 직접 만들어 블로그와 유튜브로 무료 배포했습니다. 12월에는 영어권 텔레그램 채널 Rebatify Global을 열었습니다.</p></div></div>
+        <div class="tl-item rv" style="--c: var(--personal)"><div class="y">2026<small>개인 커밋 3,222개</small></div><div class="body"><h3>AI 인프라 위의 서비스들 <span class="now">NOW</span><span class="dom d2">WEB2</span><span class="dom d3">WEB3</span></h3><p>Rebatify(5월), TossTrader(7월), ParkingPick·돈좀요(8월), LLMGateway(9월), CreatorStudio·KorbitMaker·Arbitrage Desk(10월), TT COMPANY 외주까지 <b>새 프로젝트 13개</b>를 시작했습니다. 회사에서는 AI 에셋 제작 도구를 일주일 만에 만들었습니다.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- WEB2 -->
-  <section class="sec tight" id="web2" aria-labelledby="web2-h">
+  <!-- MAP -->
+  <section class="sec tight" id="map" aria-labelledby="map-h">
     <div class="inner">
       <div class="sec-head">
-        <p class="eyebrow rv">Web2 · 운영 중인 서비스</p>
-        <h2 class="h-kr rv" id="web2-h">혼자 만들고,<br><span class="hl">지금도 돌아가는</span> 서비스</h2>
-        <p class="lead rv">한 대의 서버 위에서 서비스들이 DB, 백업, AI 게이트웨이를 함께 씁니다. 관리 화면은 사설망(Tailscale) 안에서만 열립니다.</p>
+        <p class="eyebrow rv">Web2 · Web3</p>
+        <h2 class="h-kr rv" id="map-h">회사 밖의 일은<br><span class="t2">Web2</span>와 <span class="t3">Web3</span>로 나뉩니다</h2>
+        <p class="lead rv">Web2는 암호화폐와 상관없는 일반 서비스, 주식 자동매매, 자동화 도구입니다. Web3는 암호화폐 거래소를 둘러싼 서비스, 채널, 매매 시스템입니다. 항목을 누르면 해당 설명으로 이동합니다.</p>
       </div>
-
+      <div class="map">
+        <div class="mapc w2 rv">
+          <div class="maph"><span class="dom d2">WEB2</span><b>일반 서비스 · 주식 · 자동화</b><span class="ct">6개</span></div>
+          <div class="grp"><h4>운영 중인 서비스</h4>
+            <a href="#pj-parkingpick">ParkingPick<small>금리·공모주·분양 비교 · parkingpick.kr</small></a>
+            <a href="#pj-donzomyo">돈좀요<small>경품·앱테크·공모전 이벤트 모음 · donzomyo.kr</small></a>
+            <a href="#pj-creator">CreatorStudio<small>숏폼 영상 자동 제작·게시</small></a>
+          </div>
+          <div class="grp"><h4>외주</h4><a href="#pj-tt">TT COMPANY<small>방송 크루 공식 포털 · ttcompany.co.kr</small></a></div>
+          <div class="grp"><h4>주식 자동매매</h4><a href="#pj-toss">TossTrader<small>토스증권 Open API · 국내·미국 주식</small></a></div>
+          <div class="grp"><h4>자동화 도구</h4><a href="#w2-tools">TelegramAutoChat · AI_TELEGRAM<small>텔레그램 자동화 엔진과 데스크톱 클라이언트</small></a></div>
+        </div>
+        <div class="mapc w3 rv" style="--d: 100ms">
+          <div class="maph"><span class="dom d3">WEB3</span><b>암호화폐 거래소 · 채널 · 매매</b><span class="ct">10개</span></div>
+          <div class="grp"><h4>서비스</h4><a href="#pj-rebatify">Rebatify<small>제휴 거래소 37곳 혜택 비교 · AI 에이전트용 x402·MCP API</small></a></div>
+          <div class="grp"><h4>커뮤니티</h4><a href="#w3-community">텔레그램 채널 2개 · 유튜브 채널<small>밍쓰의 크립토 이벤트 창고(2018–) · Rebatify Global · 꿀통 파괴단</small></a></div>
+          <div class="grp"><h4>매매 시스템</h4><a href="#w3-trading">KorbitMaker · Arbitrage Desk · MyBot<small>exchange-monitor · 무료 봇 배포</small></a></div>
+          <div class="grp"><h4>회사에서 한 Web3</h4><a href="#w3-company">회사 거래소 운영과 종료 · 토큰 시제품<small>LNPGames · 2019–2021</small></a></div>
+        </div>
+      </div>
+      <div class="shared rv"><span class="dom">공통 기반</span><p>두 영역은 서버 한 대, DB, 백업, AI 게이트웨이 하나를 함께 씁니다.</p></div>
       <div class="platform rv">
-        <div><h3>하나의 플랫폼, 여러 서비스</h3><p class="sub">AI 구독 4개를 게이트웨이 하나로 묶고, 각 서비스는 그 위에서 글을 쓰고, 분류하고, 검수합니다.</p></div>
+        <div><h3>하나의 플랫폼, 여러 서비스</h3><p class="sub">AI 구독 4개를 게이트웨이 하나로 묶고, Web2와 Web3 서비스가 그 위에서 함께 글을 쓰고, 분류하고, 검수합니다.</p></div>
         <div class="diag-wrap">
           <svg class="diag" viewBox="0 0 960 300" role="img" aria-label="Codex, Claude, Gemini, Grok이 LLMGateway로 모이고, Rebatify, ParkingPick, 돈좀요, CreatorStudio가 게이트웨이를 함께 씁니다">
             <g fill="none" stroke-width="1.5">
@@ -569,14 +630,15 @@ main, .marquee { position: relative; z-index: 1; }
               <text x="480" y="146" fill="#2FD0BA" font-weight="600" font-size="15">LLMGateway</text>
               <text x="480" y="168" fill="#A0A8B0" font-size="11">한도 소진 시 다음 계정</text>
               <rect x="820" y="34" width="120" height="32" rx="16" fill="#161A1F" stroke="#B49CFF"/><text x="880" y="55" fill="#F2EFE9">Rebatify</text>
-              <rect x="820" y="100" width="120" height="32" rx="16" fill="#161A1F" stroke="#2D343C"/><text x="880" y="121" fill="#F2EFE9">ParkingPick</text>
-              <rect x="820" y="168" width="120" height="32" rx="16" fill="#161A1F" stroke="#2D343C"/><text x="880" y="189" fill="#F2EFE9">돈좀요</text>
-              <rect x="820" y="234" width="120" height="32" rx="16" fill="#161A1F" stroke="#2D343C"/><text x="880" y="255" fill="#F2EFE9">CreatorStudio</text>
+              <rect x="820" y="100" width="120" height="32" rx="16" fill="#161A1F" stroke="#2FD0BA"/><text x="880" y="121" fill="#F2EFE9">ParkingPick</text>
+              <rect x="820" y="168" width="120" height="32" rx="16" fill="#161A1F" stroke="#2FD0BA"/><text x="880" y="189" fill="#F2EFE9">돈좀요</text>
+              <rect x="820" y="234" width="120" height="32" rx="16" fill="#161A1F" stroke="#2FD0BA"/><text x="880" y="255" fill="#F2EFE9">CreatorStudio</text>
               <text x="90" y="292" fill="#66707A" font-size="11">AI 구독 4개</text>
-              <text x="880" y="292" fill="#66707A" font-size="11">서비스 4개</text>
+              <text x="880" y="292" fill="#66707A" font-size="11">Web2 3개 · Web3 1개</text>
             </g>
           </svg>
         </div>
+        <div class="legend2"><span><i style="background: var(--server)"></i>Web2 서비스</span><span><i style="background: var(--w3)"></i>Web3 서비스</span><span><i style="background: var(--client)"></i>AI 구독</span></div>
         <div class="facts2">
           <div><b>410</b><span>게이트웨이 테스트 통과</span></div>
           <div><b>4 / 1</b><span>동시 작업 4개, 계정당 1개</span></div>
@@ -584,12 +646,24 @@ main, .marquee { position: relative; z-index: 1; }
           <div><b>~50</b><span>운영·장애 기록 문서</span></div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- WEB2 -->
+  <section class="sec tight" id="web2" aria-labelledby="web2-h">
+    <div class="inner">
+      <span class="bigtag" style="--bc: var(--server)" aria-hidden="true">WEB2</span>
+      <div class="sec-head">
+        <p class="eyebrow rv">Web2 · 일반 서비스</p>
+        <h2 class="h-kr rv" id="web2-h"><span class="t2">Web2</span> · 암호화폐 없이<br>사람들이 쓰는 서비스</h2>
+        <p class="lead rv">금리 비교, 이벤트 모음, 숏폼 자동화처럼 일반 사용자를 위한 서비스와, 외주 포털, 주식 자동매매, 텔레그램 도구입니다.</p>
+      </div>
+      <div class="grp-head rv first"><span class="dom d2">WEB2</span><h3>운영 중인 서비스</h3><p>직접 기획하고 만들어 지금 운영하는 서비스 3개입니다.</p></div>
       <div class="panels">
         <!-- ParkingPick -->
-        <article class="pj rv">
+        <article id="pj-parkingpick" class="pj rv">
           <div class="l">
-            <div class="row1"><span class="live"><i class="pulse"></i>운영 중 · parkingpick.kr</span><span class="since">2026.08 – · 332 커밋</span></div>
+            <div class="row1"><span class="dom d2">WEB2 · 서비스</span><span class="live"><i class="pulse"></i>운영 중 · parkingpick.kr</span><span class="since">2026.08 – · 332 커밋</span></div>
             <h3>ParkingPick<small>파킹픽 · 여윳돈이 갈 곳을 매일 비교</small></h3>
             <p class="lede">파킹통장, CMA, 예적금, 거래소 원화 예치금의 금리와 적용 한도를 매일 자동으로 모아 비교합니다. 공모주, 신규 분양, 부동산 정책까지 한 사이트에 모았습니다.</p>
             <div class="nums">
@@ -622,9 +696,9 @@ main, .marquee { position: relative; z-index: 1; }
         </article>
 
         <!-- Donzomyo -->
-        <article class="pj rv" style="--accent: var(--client)">
+        <article id="pj-donzomyo" class="pj rv" style="--accent: var(--client)">
           <div class="l">
-            <div class="row1"><span class="live"><i class="pulse"></i>운영 중 · donzomyo.kr</span><span class="since">2026.08 – · 411 커밋</span></div>
+            <div class="row1"><span class="dom d2">WEB2 · 서비스</span><span class="live"><i class="pulse"></i>운영 중 · donzomyo.kr</span><span class="since">2026.08 – · 411 커밋</span></div>
             <h3>돈좀요<small>경품·앱테크·공모전 이벤트 모음</small></h3>
             <p class="lede">흩어진 경품, 앱테크, 공모전, 리워드 이벤트를 한곳에 모으고, 응모 방법과 내 진행 상태까지 관리해 줍니다.</p>
             <div class="nums">
@@ -653,10 +727,43 @@ main, .marquee { position: relative; z-index: 1; }
           </div>
         </article>
 
-        <!-- TT COMPANY -->
-        <article class="pj rv" style="--accent: var(--web)">
+        <!-- CreatorStudio -->
+        <article id="pj-creator" class="pj rv" style="--accent: var(--personal)">
           <div class="l">
-            <div class="row1"><span class="live"><i class="pulse"></i>운영 중 · ttcompany.co.kr</span><span class="since">외주 · 2026 – · 95 커밋</span></div>
+            <div class="row1"><span class="dom d2">WEB2 · 서비스</span><span class="live auto"><i class="pulse"></i>자동 운영</span><span class="since">2026.10 – · 1,082 커밋</span></div>
+            <h3>CreatorStudio<small>사람 손 없이 도는 숏폼 스튜디오</small></h3>
+            <p class="lede">리서치부터 대본, 검수, 렌더, 게시까지 자동으로 돌고, 6개 플랫폼에 한국어·일본어로 올립니다. 올린 뒤의 성과는 다시 대본에 반영됩니다.</p>
+            <div class="pipe" aria-label="리서치, 주제, 대본, 대본 검수, 미디어 검수, 프레임 검수, 중복 확인, 게시"><span>리서치</span><span>주제</span><span>대본</span><span>대본<br>검수</span><span>미디어<br>검수</span><span>프레임<br>검수</span><span>중복<br>확인</span><span>게시</span><i class="runner"></i></div>
+            <div class="nums">
+              <div><b data-count="6">6</b><span>게시 플랫폼</span></div>
+              <div><b data-count="75">75</b><span>봇·MCP로 제어하는 기능 (136개 중)</span></div>
+            </div>
+            <blockquote><p>previously drowned in proof machinery and published nothing</p><cite>AGENTS.md · 과거의 실수를 규칙으로 남긴 문장</cite></blockquote>
+          </div>
+          <div class="r">
+            <div class="blk"><h4>파이프라인</h4><ul>
+              <li>30초마다 한 단계씩 진행. 허브는 서버에서, 영상 생성·나레이션·ffmpeg·브라우저 게시는 Windows 워커가</li>
+              <li>YouTube, TikTok, Instagram, Facebook, 네이버 클립, 네이버 블로그</li>
+              <li>나레이션을 다시 받아써서 대본과 대조하고, 검은 여백과 프레임을 검사</li>
+              <li>완성본은 NAS에 백업</li>
+            </ul></div>
+            <div class="blk"><h4>배우는 구조</h4><ul>
+              <li>24·72시간 조회수를 계정별 기준선과 비교</li>
+              <li>'첫 3초 이후 시청' 비율로 <b>잘된 첫 문장과 안된 첫 문장</b>을 대본 작성기에 되돌려 줌</li>
+              <li>새 아이디어는 고정 비율 실험군으로 대조군과 비교</li>
+              <li>매일 10:10 자동 개발 에이전트가 제안을 골라 구현·배포, 주 2회 '히트 스카우트' 리서치</li>
+              <li>모든 봇 동작은 감사 로그로, 커밋마다 '변경:' 줄이 앱 안의 변경 기록이 됨</li>
+            </ul></div>
+          </div>
+        </article>
+
+      </div>
+      <div class="grp-head rv"><span class="dom d2">WEB2</span><h3>외주</h3><p>의뢰를 받아 개발하고, 지금도 운영까지 맡고 있는 사이트입니다.</p></div>
+      <div class="panels">
+        <!-- TT COMPANY -->
+        <article id="pj-tt" class="pj rv" style="--accent: var(--web)">
+          <div class="l">
+            <div class="row1"><span class="dom d2">WEB2 · 외주</span><span class="live"><i class="pulse"></i>운영 중 · ttcompany.co.kr</span><span class="since">외주 · 2026 – · 95 커밋</span></div>
             <h3>TT COMPANY<small>외주 개발·운영 · 구독자 9.5만 방송 크루의 공식 포털</small></h3>
             <p class="lede">외주로 개발하고 운영까지 맡은 TT COMPANY 공식 포털입니다. 멤버들의 라이브, 일정, 후원 랭킹, 다시보기, 커뮤니티를 한곳에 모았고, 실시간 랭킹 사이트와 AI 영상 스튜디오까지 세 개의 사이트로 운영합니다.</p>
             <div class="nums">
@@ -685,40 +792,13 @@ main, .marquee { position: relative; z-index: 1; }
           </div>
         </article>
 
-        <!-- CreatorStudio -->
-        <article class="pj rv" style="--accent: var(--personal)">
-          <div class="l">
-            <div class="row1"><span class="live auto"><i class="pulse"></i>자동 운영</span><span class="since">2026.10 – · 1,082 커밋</span></div>
-            <h3>CreatorStudio<small>사람 손 없이 도는 숏폼 스튜디오</small></h3>
-            <p class="lede">리서치부터 대본, 검수, 렌더, 게시까지 자동으로 돌고, 6개 플랫폼에 한국어·일본어로 올립니다. 올린 뒤의 성과는 다시 대본에 반영됩니다.</p>
-            <div class="pipe" aria-label="리서치, 주제, 대본, 대본 검수, 미디어 검수, 프레임 검수, 중복 확인, 게시"><span>리서치</span><span>주제</span><span>대본</span><span>대본<br>검수</span><span>미디어<br>검수</span><span>프레임<br>검수</span><span>중복<br>확인</span><span>게시</span><i class="runner"></i></div>
-            <div class="nums">
-              <div><b data-count="6">6</b><span>게시 플랫폼</span></div>
-              <div><b data-count="75">75</b><span>봇·MCP로 제어하는 기능 (136개 중)</span></div>
-            </div>
-            <blockquote><p>previously drowned in proof machinery and published nothing</p><cite>AGENTS.md · 과거의 실수를 규칙으로 남긴 문장</cite></blockquote>
-          </div>
-          <div class="r">
-            <div class="blk"><h4>파이프라인</h4><ul>
-              <li>30초마다 한 단계씩 진행. 허브는 서버에서, 영상 생성·나레이션·ffmpeg·브라우저 게시는 Windows 워커가</li>
-              <li>YouTube, TikTok, Instagram, Facebook, 네이버 클립, 네이버 블로그</li>
-              <li>나레이션을 다시 받아써서 대본과 대조하고, 검은 여백과 프레임을 검사</li>
-              <li>완성본은 NAS에 백업</li>
-            </ul></div>
-            <div class="blk"><h4>배우는 구조</h4><ul>
-              <li>24·72시간 조회수를 계정별 기준선과 비교</li>
-              <li>'첫 3초 이후 시청' 비율로 <b>잘된 첫 문장과 안된 첫 문장</b>을 대본 작성기에 되돌려 줌</li>
-              <li>새 아이디어는 고정 비율 실험군으로 대조군과 비교</li>
-              <li>매일 10:10 자동 개발 에이전트가 제안을 골라 구현·배포, 주 2회 '히트 스카우트' 리서치</li>
-              <li>모든 봇 동작은 감사 로그로, 커밋마다 '변경:' 줄이 앱 안의 변경 기록이 됨</li>
-            </ul></div>
-          </div>
-        </article>
-
+      </div>
+      <div class="grp-head rv"><span class="dom d2">WEB2</span><h3>주식 자동매매</h3><p>암호화폐가 아닌 국내·미국 주식을 다룹니다.</p></div>
+      <div class="panels">
         <!-- TossTrader -->
-        <article class="pj rv" style="--accent: var(--client)">
+        <article id="pj-toss" class="pj rv" style="--accent: var(--client)">
           <div class="l">
-            <div class="row1"><span class="live lock"><i class="pulse"></i>페이퍼 우선 · 실전 잠금</span><span class="since">2026.07 –</span></div>
+            <div class="row1"><span class="dom d2">WEB2 · 주식</span><span class="live lock"><i class="pulse"></i>페이퍼 우선 · 실전 잠금</span><span class="since">2026.07 –</span></div>
             <h3>TossTrader<small>토스증권 Open API 주식 자동매매</small></h3>
             <p class="lede">국내·미국 주식을 다루는 자동매매 서비스입니다. 실전 거래는 잠가 두고, 미리 보지 않은 데이터로 검증을 통과한 전략만 올립니다.</p>
             <div class="nums">
@@ -745,22 +825,29 @@ main, .marquee { position: relative; z-index: 1; }
           </div>
         </article>
       </div>
+      <div class="grp-head rv" id="w2-tools"><span class="dom d2">WEB2</span><h3>자동화 도구</h3><p>공개 저장소로 올린 텔레그램 도구입니다.</p></div>
+      <div class="tools2">
+        <article class="gc srv rv"><p class="t">공개 저장소 <span>C# · MIT</span></p><h4>TelegramAutoChat</h4><p>텔레그램 사용자 계정 자동화 엔진. 인터페이스 하나만 구현하면 새 자동화가 붙고, 로그인·세션 유지·메시지 라우팅·예약 실행은 엔진이 맡습니다. <a href="https://github.com/NakOh/TelegramAutoChat" target="_blank" rel="noopener" style="color: var(--server)">GitHub ↗</a></p></article>
+        <article class="gc srv rv" style="--d: 80ms"><p class="t">공개 저장소 <span>TypeScript · Electron</span></p><h4>AI_TELEGRAM</h4><p>Telegram Web A를 포크한 데스크톱 앱. 전달 메시지 숨기기와 중복 제거, 실시간 급상승 키워드 패널, 내 채널 대시보드를 더했습니다. <a href="https://github.com/NakOh/AI_TELEGRAM" target="_blank" rel="noopener" style="color: var(--server)">GitHub ↗</a></p></article>
+      </div>
     </div>
   </section>
 
   <!-- WEB3 -->
   <section class="sec tight" id="web3" aria-labelledby="web3-h">
     <div class="inner">
+      <span class="bigtag" style="--bc: var(--w3)" aria-hidden="true">WEB3</span>
       <div class="sec-head">
-        <p class="eyebrow rv">Web3 · 크립토</p>
-        <h2 class="h-kr rv" id="web3-h">거래소를 기록하고, 만들고,<br><span class="hl3">그 위에서 거래합니다</span></h2>
-        <p class="lead rv">2018년 블로그에서 거래소를 정리하던 사람이 2019년 회사 거래소를 운영했고, 지금은 거래소 혜택 비교 서비스와 매매 시스템을 직접 만듭니다.</p>
+        <p class="eyebrow rv">Web3 · 암호화폐</p>
+        <h2 class="h-kr rv" id="web3-h"><span class="t3">Web3</span> · 거래소를 기록하고,<br>만들고, 그 위에서 거래합니다</h2>
+        <p class="lead rv">2018년 블로그와 텔레그램에서 거래소를 정리하던 사람이 2019년 회사 거래소를 운영했고, 지금은 거래소 혜택 비교 서비스와 매매 시스템을 직접 만듭니다.</p>
       </div>
 
+      <div class="grp-head rv first"><span class="dom d3">WEB3</span><h3>서비스</h3><p>거래소 혜택 비교를 사람에게는 웹으로, AI 에이전트에게는 유료 API로 제공합니다.</p></div>
       <div class="panels">
-        <article class="pj rv" style="--accent: var(--w3)">
+        <article id="pj-rebatify" class="pj rv" style="--accent: var(--w3)">
           <div class="l">
-            <div class="row1"><span class="live"><i class="pulse"></i>운영 중 · rebatify.net</span><span class="since">2026.05 – · 968 커밋</span></div>
+            <div class="row1"><span class="dom d3">WEB3 · 서비스</span><span class="live"><i class="pulse"></i>운영 중 · rebatify.net</span><span class="since">2026.05 – · 968 커밋</span></div>
             <h3>Rebatify<small>See what you actually take home</small></h3>
             <p class="lede">거래소 이벤트와 수수료 혜택을 '실제로 손에 쥐는 금액' 기준으로 비교합니다. 같은 데이터를 사람에게는 웹으로, AI 에이전트에게는 API로 팝니다.</p>
             <div class="nums">
@@ -789,11 +876,11 @@ main, .marquee { position: relative; z-index: 1; }
         </article>
       </div>
 
+      <div class="grp-head rv" id="w3-community"><span class="dom d3">WEB3</span><h3>커뮤니티</h3><p>거래소 상장·이벤트 소식을 직접 정리해 알리는 채널입니다.</p></div>
       <div class="counters">
-        <div class="counter rv"><b data-count="2934">2,934</b><span class="nm">밍쓰의 크립토 이벤트 창고</span><p>국내 거래소 상장·이벤트 소식 텔레그램 채널. 한 번 초기화했지만 게시물 번호가 1만을 넘었습니다.</p><a href="https://t.me/MingsBog" target="_blank" rel="noopener">t.me/MingsBog ↗</a></div>
-        <div class="counter rv" style="--d: 80ms"><b data-count="2065">2,065</b><span class="nm">네이버 블로그 글</span><p>2018년 10월부터. 국내 거래소 약 200곳 아카이브에서 시작해 지금은 파킹픽 콘텐츠 채널입니다.</p><a href="https://blog.naver.com/parkingpick" target="_blank" rel="noopener">blog.naver.com/parkingpick ↗</a></div>
-        <div class="counter rv" style="--d: 160ms"><b data-count="247">247</b><span class="nm">Rebatify Global</span><p>2025년 12월에 연 영어권 텔레그램 채널. 해외 거래소 보너스 소식을 전합니다.</p><a href="https://t.me/rebatify" target="_blank" rel="noopener">t.me/rebatify ↗</a></div>
-        <div class="counter rv" style="--d: 240ms"><b data-count="177">177</b><span class="nm">밍쓰의 크립토 꿀통 파괴단</span><p>유튜브 채널. 거래소 혜택 비교와 직접 만든 무료 봇 사용법을 올립니다.</p><a href="https://www.youtube.com/@mings_crypto" target="_blank" rel="noopener">@mings_crypto ↗</a></div>
+        <div class="counter rv"><b data-count="2934">2,934</b><span class="nm">밍쓰의 크립토 이벤트 창고</span><p>2018년 10월 블로그와 함께 연 채널. 국내 거래소 상장·이벤트 소식을 전하고, 한 번 초기화한 뒤에도 게시물 번호가 1만을 넘었습니다.</p><a href="https://t.me/MingsBog" target="_blank" rel="noopener">t.me/MingsBog ↗</a></div>
+        <div class="counter rv" style="--d: 80ms"><b data-count="247">247</b><span class="nm">Rebatify Global</span><p>2025년 12월에 연 영어권 텔레그램 채널. 해외 거래소 보너스 소식을 전합니다.</p><a href="https://t.me/rebatify" target="_blank" rel="noopener">t.me/rebatify ↗</a></div>
+        <div class="counter rv" style="--d: 160ms"><b data-count="177">177</b><span class="nm">밍쓰의 크립토 꿀통 파괴단</span><p>유튜브 채널. 거래소 혜택 비교와 직접 만든 무료 봇 사용법을 올립니다.</p><a href="https://www.youtube.com/@mings_crypto" target="_blank" rel="noopener">@mings_crypto ↗</a></div>
       </div>
     </div>
 
@@ -805,7 +892,8 @@ main, .marquee { position: relative; z-index: 1; }
     </div>
 
     <div class="inner">
-      <div class="subhead rv"><p class="eyebrow">Trading systems</p><h3>매매 시스템: 자동으로 돌리고, 확인은 사람이</h3><p>수익 금액 대신 각 시스템이 무엇을 하고 어떻게 스스로를 막는지만 적었습니다.</p></div>
+            <div class="grp-head rv" id="w3-trading"><span class="dom d3">WEB3</span><h3>매매 시스템</h3><p>자동으로 돌리되 돈이 움직이는 결정은 사람이 합니다. 수익 금액 대신 무엇을 하고 어떻게 스스로를 막는지만 적었습니다.</p></div>
+
       <div class="xrows">
         <div class="xrow rv"><div class="nm">KorbitMaker<small>코빗 USDT 메이커 봇</small><em>2026.09 – · Python · Go</em></div><ul>
           <li>거래소의 메이커 인센티브 구조에 맞춘 USDT/KRW 전용 봇. <b>평균 단가 아래로는 팔지 않음</b></li>
@@ -834,6 +922,9 @@ main, .marquee { position: relative; z-index: 1; }
           <li>거래소 이벤트 거래량을 채우는 자동매매 봇을 직접 만들어 무료로 배포. 런처 하나로 11개 거래소 지원</li>
           <li>사용법과 주의사항을 유튜브 영상과 블로그 글로 함께 공개</li>
         </ul></div>
+      </div>
+      <div class="grp-head rv" id="w3-company"><span class="dom d3">WEB3</span><h3>회사에서 한 Web3</h3><p>LNPGames에서 맡았던 암호화폐 거래소와 토큰 작업입니다.</p></div>
+      <div class="xrows">
         <div class="xrow rv"><div class="nm">회사 거래소<small>LNPGames · 운영과 종료</small><em>2019 – 2021</em></div><ul>
           <li>BTC·ETH·XRP와 자체 토큰 3종을 다루는 거래소의 웹, Java 관리자, 코인별 코어 서비스·자동 출금</li>
           <li>입금 열고 닫기, 토큰 추가, 미러 서버, 서버 이전, 거래 페이지 속도 개선부터 <b>상장 폐지·입금 차단까지 종료 처리</b></li>
